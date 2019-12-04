@@ -1,0 +1,93 @@
+$text-color:  #373737;
+
+$link-color:      $text-color;
+$link-highlight:  #c23127;
+
+$background-color: #efefef;
+
+$card-color: white;
+$card-shadow: grey;
+
+body {
+  margin: 0;
+  font-family:      monospace;
+  font-size:        16px;
+  font-weight:      normal;
+  color:            $text-color;
+  background-color: $background-color;
+}
+
+a {
+  color:            $link-color;
+  text-decoration:  underline;
+
+  &:hover,
+  &:focus {
+    color:                $link-highlight;
+    border-bottom-color:  $link-highlight;
+    outline:              none;
+  }
+}
+
+ul {
+  list-style-type:        none;
+}
+
+.card {
+  z-index: 2;
+
+  display:          inline-block;
+  background-color: $card-color;
+  border-style: solid;
+  border-width: thin;
+  border-color: $text-color;
+
+  &__contents {
+    margin: 1em;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.social-icon {
+  width: 2vw;
+}
+
+.json {
+  user-select: none;
+
+  &__content {
+    padding:  0;
+    margin:   0 0 0 1em;
+  }
+
+  &__item {
+    margin: 0.5em 0 0.5em 0;
+  }
+
+  &__array {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+section {
+  height: 100vh;
+  background-color: $background-color;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#gravity-canvas {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}

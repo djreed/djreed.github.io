@@ -1,0 +1,74 @@
+==================================================================
+https://keybase.io/djreed
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://davidjreed.net
+  * I am djreed (https://keybase.io/djreed) on keybase.
+  * I have a public key with fingerprint D770 FDE0 2852 EF5B D177  316A DE8F 2C40 1F8A 1116
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101df26b611b83ee2584b62f7b822d6271d9da76c41d06ba5c895c27bc9b233f2840a",
+      "fingerprint": "d770fde02852ef5bd177316ade8f2c401f8a1116",
+      "host": "keybase.io",
+      "key_id": "de8f2c401f8a1116",
+      "kid": "0101df26b611b83ee2584b62f7b822d6271d9da76c41d06ba5c895c27bc9b233f2840a",
+      "uid": "08612817037bfb01ca6584e74697a219",
+      "username": "djreed"
+    },
+    "service": {
+      "hostname": "davidjreed.net",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1512356724,
+  "expire_in": 157680000,
+  "prev": "f54ee4dbd4a7136582d022ac971d07a115dccf0a92dad82a8b73b27e8b1580e8",
+  "seqno": 20,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.76
+Comment: https://keybase.io/crypto
+
+yMNBAnicrVJtUFRVGF6WDxVBCahsMpCLhtK23Xvu526MYcnHNBGhNFMOud57z7lw
+Q3a33csCAuMoKiNMmYGgrUVgQRIQqRSiFawGYUUoidYySzWNgG5Tsjo5k2j3av7r
+Z+fPmfO+z/Oc533mPR0ZrAsP8u0xpMbX3PdA0DcD+4t1G5afUMoxwQbLMHM5Voju
+XGgzRE7FUihDzIzhBE5ACTACQxACRyIEaI4SGCCxAgcAZABLQBPkWUakCIgzAk+L
+nIkWASuIJgGQpAQ4CucxAybJ1nzksDtkq6LKQpbFJYhwwNEASbQACZYlCYaHiJOA
+SOGExPEEQTAqscDm1BiqOYF3IqNsU2vqw3LH3n/g/2ffxXflOIYAHMHiJCtIAk6I
+PKPqIZZiTCwPCJMGdCKHlS9CmqtXHQhBrNKAqTWXLCItVm2Oe33eJd/FGK1IUbl2
+h02xibbNaq9AUexOs8ZVyuwauAQJln9lLIJshWqOKsOFHE7ZZsXMhIoUFVnTJWgC
+kDTDAsqAoVK77EAWWUPQLMPh6tH+QS5VUqIphCgoQIpnCVKdBEAcAF40qaHgrBok
+DUVRwnkTgDzkAM8JLCkAFnECQXM44jBtsNesNswMVFGFz1c1nXK+lVeKHQir9Azk
+heiCwnVhoXptwXThC6Lurd1k1uK56FM3chefjA9Pm6hZOTU4/te8La02c8rkCu9+
+EFv3bmxwc0Po9tGPryw7VlQfCHw3mNjdHecJTZQ9voMxe19vmQm+8HA1MLLZ6YFO
+V7Idlka6BrNTO+Ym7GXrdY1/ZnpuzbcZF0YcyFofd1z8DHuyYahq7PNu/1ZLUlft
+W1VSfWbce4GRQ9NNddTFL6rJpYeLL0bcbEvyrnHqU/T+86271wZTRXV9Q4H6xHN5
+w8v+qL08FvJy7cy+hhZuw+r2K3Mne2N+eO6xd44YXnimeaig79c9A+MLp345n/Ho
+mSP+TWfxdbr0nHMbdZddFdMJXE1OVNfI/O6bDbd1l+SKsg6sKH6T79KKMPf1HzMe
+N/38SXu0vGrOX7aqf2nXV5WDAx88n2uGPeO6v2Fn+aIHdxXuyP46pU253zv9hL5x
+Zo1315a1gY883mSzUORu7LP6Doz5H7nwYQ+bkDf5yryncne+mO0lmyJOX219u8mQ
+wbyUvzzH5ZhNnB113/CLLYaJkvR1zyrhzWHvbxxrH/2+ettB8NO23kOpQZJhJ5zJ
+/DTnWsLxugB364yx6k1r4W/u1SuTppIifVf3gpY8sYccmT1WmjR9Yri9PGaJ/qx7
+ydHoWX31l7HRncmefYf7CxZ0VEzHffvQ0ZDhuZKemd7bxuJFQgJ7qt/t23G9dfsb
+qVkTv19LezqtDY9i+7b+A7W7wYo=
+=NEPJ
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/djreed
+
+==================================================================
