@@ -12,6 +12,7 @@ $(function () {
   // constants
   const IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   const IS_APPLE  = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const MOBILE_OR_APPLE = IS_MOBILE || IS_APPLE
   
   function prepareCanvas(options) {
     
@@ -79,7 +80,7 @@ $(function () {
     Runner.run(runner, engine);
     
     // create squares
-    var squaresStackCompositeTop = IS_MOBILE ? 50 : -500;
+    var squaresStackCompositeTop = MOBILE_OR_APPLE ? 50 : -500;
     var squaresStackComposite = Composites.stack(0, squaresStackCompositeTop, 32, 5, 0, 0,
       function (x, y) {
         var size = Common.random(5, 60);
@@ -162,7 +163,7 @@ $(function () {
       ),
     ]);
 
-    if (!IS_MOBILE) {
+    if (!MOBILE_OR_APPLE) {
       setTimeout(function () {
         // add obstacle for Card
         var cardPos = $('#about-card').offset();
@@ -187,7 +188,7 @@ $(function () {
       }, 300);
     }
 
-    if (IS_MOBILE) {
+    if (MOBILE_OR_APPLE) {
       // no mouse control in mobile
       if (window.DeviceMotionEvent !== undefined) {
         // mobile roof
