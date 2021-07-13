@@ -13,6 +13,9 @@ $(function () {
   const IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   const IS_APPLE  = /iPhone|iPad|iPod/i.test(navigator.userAgent);
   const MOBILE_OR_APPLE = IS_MOBILE || IS_APPLE
+
+  // console.log('Mobile?', IS_MOBILE)
+  // console.log('Apple?', IS_APPLE)
   
   function prepareCanvas(options) {
     
@@ -208,6 +211,8 @@ $(function () {
         ]);
         
         window.addEventListener('devicemotion', function(e) {
+          // console.log('devicemotion')
+
           var ax = event.accelerationIncludingGravity.x * 0.6;
           var ay = event.accelerationIncludingGravity.y * 0.6;
           
