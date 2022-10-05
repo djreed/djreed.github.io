@@ -210,11 +210,11 @@ $(function () {
           ),
         ]);
         
-        window.addEventListener('devicemotion', function(e) {
+        window.addEventListener('devicemotion', function(e) => {
           // console.log('devicemotion')
 
-          var ax = event.accelerationIncludingGravity.x * 0.6;
-          var ay = event.accelerationIncludingGravity.y * 0.6;
+          var ax = e.accelerationIncludingGravity.x * 0.6;
+          var ay = e.accelerationIncludingGravity.y * 0.6;
           
           // define world-wide configs
           world.gravity = {
