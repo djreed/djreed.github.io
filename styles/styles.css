@@ -6,7 +6,6 @@ body {
   color: #373737;
   background-color: #efefef;
 }
-
 a {
   color: #373737;
   text-decoration: underline;
@@ -16,11 +15,9 @@ a:hover, a:focus {
   border-bottom-color: #c23127;
   outline: none;
 }
-
 ul {
   list-style-type: none;
 }
-
 .card {
   z-index: 2;
   display: inline-block;
@@ -32,16 +29,13 @@ ul {
 .card__contents {
   margin: 1em;
 }
-
 img {
   max-width: 100%;
   height: auto;
 }
-
 .social-icon {
   width: 2vw;
 }
-
 .json {
   user-select: none;
 }
@@ -57,7 +51,6 @@ img {
   flex-direction: row;
   align-items: center;
 }
-
 section {
   height: 100vh;
   background-color: #efefef;
@@ -67,10 +60,8 @@ section {
   justify-content: center;
   align-items: center;
 }
-
 #gravity-canvas {
   position: absolute;
-  bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
 }

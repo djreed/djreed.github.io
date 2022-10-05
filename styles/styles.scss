@@ -87,7 +87,7 @@ section {
 
 #gravity-canvas {
   position: absolute;
-  bottom: -5px;
+  // bottom: -5px; // Not sure why I was originally translating?
   left: 50%;
   transform: translateX(-50%);
 }

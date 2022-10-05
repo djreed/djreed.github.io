@@ -35,7 +35,7 @@ $(function () {
     var wallWidth = 50;
     
     var canvasWidth = options.canvasWidth;
-    var canvasHeight = options.canvasHeight + 5;
+    var canvasHeight = options.canvasHeight;
     var canvas = options.canvas;
     
     // direct access to classes
@@ -320,11 +320,19 @@ $(function () {
     }
   }
 
-  var $contentSection = $('#main-content');
+  // Document height/width in a generalized way, pray this works on Mobile
+  // https://stackoverflow.com/questions/1145850/how-to-get-height-of-entire-document-with-javascript
+  var win = window,
+      doc = document,
+      docElem = doc.documentElement,
+      body = doc.getElementsByTagName('body')[0],
+      width = win.innerWidth || docElem.clientWidth || body.clientWidth,
+      height = win.innerHeight|| docElem.clientHeight|| body.clientHeight;
+  console.log(width + ' × ' + height);
 
   var matterCtrl = prepareCanvas({
     canvas: document.querySelector('#gravity-canvas'),
-    canvasWidth: document.body.clientWidth,
-    canvasHeight: $contentSection.height(),
+    canvasWidth: width,
+    canvasHeight: height,
   });
 });
