@@ -1,12 +1,22 @@
+// JS Physics Engine provided by MatterJS: https://brm.io/matter-js/
+// Source code ends up being ~77 kilobytes, which is smaller than other engines
+// that I've found so far
+// (https://github.com/liabru/matter-js/blob/master/build/matter.min.js)
+
 const fillColor = 'white';
 const strokeColor = '#373737';
 const backgroundColor = '#efefef';
 
 // auxiliary functions
 var aux = {};
+
+// Math conversion
 aux.degreesToRadians = function (degrees) {
   return degrees * Math.PI / 180; 
 };
+
+// Rather than use JQuery for element parameters
+// Source: https://youmightnotneedjquery.com/
 aux.offset = function (el) {
   box = el.getBoundingClientRect();
   docElem = document.documentElement;
@@ -16,13 +26,13 @@ aux.offset = function (el) {
   };
 }
 
-// constants
+// Constants for mobile-friendly decision-making
 const IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 const IS_APPLE  = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 const MOBILE_OR_APPLE = IS_MOBILE || IS_APPLE
 
-// console.log('Mobile?', IS_MOBILE)
-// console.log('Apple?', IS_APPLE)
+console.log('Mobile?', IS_MOBILE)
+console.log('Apple?', IS_APPLE)
 
 function prepareCanvas(options) {
   
@@ -173,6 +183,7 @@ function prepareCanvas(options) {
     ),
   ]);
   
+  // On non-mobile windows we want the JSON card to be an obstacle for squares
   if (!MOBILE_OR_APPLE) {
     setTimeout(function () {
       // add obstacle for Card
@@ -199,6 +210,7 @@ function prepareCanvas(options) {
     }, 300);
   }
   
+  // On mobile windows screen space is too important, so don't collide w/ card
   if (MOBILE_OR_APPLE) {
     // no mouse control in mobile
     if (window.DeviceMotionEvent !== undefined) {
@@ -219,19 +231,19 @@ function prepareCanvas(options) {
       ]);
       
       window.addEventListener('devicemotion', function(e) {
-        // console.log('devicemotion')
+        console.log('devicemotion', e)
         
         var ax = e.accelerationIncludingGravity.x * 0.6;
         var ay = e.accelerationIncludingGravity.y * 0.6;
         
         // define world-wide configs
         world.gravity = {
-          x: ax,
-          y: ay * -1,
+          x: ax,      // west to east axis
+          y: ay * -1, // south to north axis, so inverse is "ground-facing"
         };
       });
     }
-    
+
   } else {
     // add mouse control
     var mouse = Mouse.create(render.canvas);
@@ -244,6 +256,7 @@ function prepareCanvas(options) {
         }
       }
     });
+
     // https://github.com/liabru/matter-js/issues/84
     // mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
     // mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
@@ -328,14 +341,15 @@ function prepareCanvas(options) {
   }
 }
 
-// Document height/width in a generalized way, pray this works on Mobile
+// Document height/width in a generalized way, so far from testing this has
+// worked on Mobile windows without error
 // https://stackoverflow.com/questions/1145850/how-to-get-height-of-entire-document-with-javascript
 var win = window,
-doc = document,
-docElem = doc.documentElement,
-body = doc.getElementsByTagName('body')[0],
-width = win.innerWidth || docElem.clientWidth || body.clientWidth,
-height = win.innerHeight|| docElem.clientHeight|| body.clientHeight;
+    doc = document,
+    docElem = doc.documentElement,
+    body = doc.getElementsByTagName('body')[0],
+    width = win.innerWidth || docElem.clientWidth || body.clientWidth,
+    height = win.innerHeight|| docElem.clientHeight|| body.clientHeight;
 console.log(width + ' × ' + height);
 
 var matterCtrl = prepareCanvas({
