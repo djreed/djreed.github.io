@@ -185,6 +185,7 @@ function prepareCanvas(options) {
   
   // On non-mobile windows we want the JSON card to be an obstacle for squares
   if (!MOBILE_OR_APPLE) {
+    console.log("Not mobile, adding card obstacle")
     setTimeout(function () {
       // add obstacle for Card
       var card = document.querySelector('.card');
@@ -214,6 +215,7 @@ function prepareCanvas(options) {
   if (MOBILE_OR_APPLE) {
     // no mouse control in mobile
     if (window.DeviceMotionEvent !== undefined) {
+      console.log("DeviceMotion active, adding mobile roof and gravity functions")
       // mobile roof
       World.add(world, [
         Bodies.rectangle(
