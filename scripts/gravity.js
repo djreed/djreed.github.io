@@ -20,11 +20,11 @@ window.addEventListener('deviceorientation', function(event){
 
 //Events that are running always
 if (window.DeviceMotionEvent) {
-    console.log("devicemotion was defined");
+    console.log("devicemotion was defined", window.DeviceMotionEvent);
 };
 
 if (window.DeviceOrientationEvent) {
-  console.log("GyroScope was defined");
+  console.log("GyroScope was defined", window.DeviceOrientationEvent);
 };
 
 /////////////////////////////////
