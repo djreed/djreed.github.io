@@ -129,7 +129,7 @@ function prepareCanvas(options) {
   // add bodies to the world
   World.add(world, [
     squaresStackComposite,
-    // roof
+    // roof -- high enough that squares can go off-screen upwards
     Bodies.rectangle(
       canvasWidth / 2,
       -1.5 * canvasHeight,
@@ -236,12 +236,14 @@ function prepareCanvas(options) {
         var ax = e.accelerationIncludingGravity.x * 0.6;
         var ay = e.accelerationIncludingGravity.y * 0.6;
         
-        // define world-wide configs
+        // redefine world gravity
         world.gravity = {
           x: ax,      // west to east axis
           y: ay * -1, // south to north axis, so inverse is "ground-facing"
         };
-      });
+      }, true); // Capture before bubbling anywhere
+    } else {
+      console.log("window.DeviceMotionEvent is undefined, unable to enable motion control")
     }
 
   } else {
