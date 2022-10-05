@@ -31,8 +31,8 @@ const IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini
 const IS_APPLE  = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 const MOBILE_OR_APPLE = IS_MOBILE || IS_APPLE
 
-console.log('Mobile?', IS_MOBILE)
-console.log('Apple?', IS_APPLE)
+console.debug('Mobile?', IS_MOBILE)
+console.debug('Apple?', IS_APPLE)
 
 function prepareCanvas(options) {
   
@@ -185,7 +185,7 @@ function prepareCanvas(options) {
   
   // On non-mobile windows we want the JSON card to be an obstacle for squares
   if (!MOBILE_OR_APPLE) {
-    console.log("Not mobile, adding card obstacle")
+    console.debug("Not mobile, adding card obstacle")
     setTimeout(function () {
       // add obstacle for Card
       var card = document.querySelector('.card');
@@ -215,7 +215,7 @@ function prepareCanvas(options) {
   if (MOBILE_OR_APPLE) {
     // no mouse control in mobile
     if (window.DeviceMotionEvent !== undefined) {
-      console.log("DeviceMotion active, adding mobile roof and gravity functions")
+      console.debug("DeviceMotion active, adding mobile roof and gravity functions")
       // mobile roof
       World.add(world, [
         Bodies.rectangle(
@@ -233,7 +233,7 @@ function prepareCanvas(options) {
       ]);
       
       window.addEventListener('devicemotion', function(e) {
-        // console.log('devicemotion', e)
+        console.debug('devicemotion', e)
         var ax = e.accelerationIncludingGravity.x * 0.6;
         var ay = e.accelerationIncludingGravity.y * 0.6;
         
@@ -244,7 +244,7 @@ function prepareCanvas(options) {
         };
       }, true); // Capture before bubbling anywhere
     } else {
-      // console.log("window.DeviceMotionEvent is undefined, unable to enable motion control")
+      console.debug("window.DeviceMotionEvent is undefined, unable to enable motion control")
     }
 
   } else {
@@ -353,7 +353,7 @@ var win = window,
     body = doc.getElementsByTagName('body')[0],
     width = win.innerWidth || docElem.clientWidth || body.clientWidth,
     height = win.innerHeight|| docElem.clientHeight|| body.clientHeight;
-// console.log(width + ' × ' + height);
+console.debug('Screen: ' + width + ' × ' + height);
 
 var matterCtrl = prepareCanvas({
   canvas: document.querySelector('#gravity-canvas'),
