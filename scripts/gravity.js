@@ -7,6 +7,14 @@ var aux = {};
 aux.degreesToRadians = function (degrees) {
   return degrees * Math.PI / 180; 
 };
+aux.offset = function (el) {
+  box = el.getBoundingClientRect();
+  docElem = document.documentElement;
+  return {
+    top: box.top + window.pageYOffset - docElem.clientTop,
+    left: box.left + window.pageXOffset - docElem.clientLeft
+  };
+}
 
 // constants
 const IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -168,9 +176,10 @@ function prepareCanvas(options) {
   if (!MOBILE_OR_APPLE) {
     setTimeout(function () {
       // add obstacle for Card
-      var cardPos = $('#about-card').offset();
-      var cardHeight = $('#about-card').height();
-      var cardWidth = $('#about-card').width();
+      var card = document.querySelector('.card');
+      var cardWidth = card.getBoundingClientRect().width;
+      var cardHeight = card.getBoundingClientRect().height;
+      var cardPos = aux.offset(card);
       
       // obstacle
       World.add(world, Bodies.rectangle(
