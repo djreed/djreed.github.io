@@ -7,6 +7,8 @@ const fillColor = 'white';
 const strokeColor = '#373737';
 const backgroundColor = '#efefef';
 
+var _window = window;
+
 // auxiliary functions
 var aux = {};
 
@@ -214,7 +216,7 @@ function prepareCanvas(options) {
   // On mobile windows screen space is too important, so don't collide w/ card
   if (MOBILE_OR_APPLE) {
     // no mouse control in mobile
-    if (window.DeviceMotionEvent !== undefined) {
+    if (_window.DeviceMotionEvent !== undefined) {
       console.log("DeviceMotion active, adding mobile roof and gravity functions")
       // mobile roof
       World.add(world, [
@@ -232,7 +234,7 @@ function prepareCanvas(options) {
         ),
       ]);
       
-      window.addEventListener('devicemotion', function(e) {
+      _window.addEventListener('devicemotion', function(e) {
         console.log('devicemotion', e)
         
         var ax = e.accelerationIncludingGravity.x * 0.6;
