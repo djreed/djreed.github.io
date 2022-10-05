@@ -1,4 +1,4 @@
-$(function () {
+function () {
   const fillColor = 'white';
   const strokeColor = '#373737';
   const backgroundColor = '#efefef';
@@ -335,4 +335,4 @@ $(function () {
     canvasWidth: width,
     canvasHeight: height,
   });
-});
+}();
