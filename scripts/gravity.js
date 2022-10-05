@@ -1,4 +1,3 @@
-
 const fillColor = 'white';
 const strokeColor = '#373737';
 const backgroundColor = '#efefef';
