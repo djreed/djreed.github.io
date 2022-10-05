@@ -3,6 +3,32 @@
 // that I've found so far
 // (https://github.com/liabru/matter-js/blob/master/build/matter.min.js)
 
+/////////////////////////////////
+window.addEventListener("devicemotion", function(event){
+        //x = event.accelerationIncludingGravity.x;
+        //y = event.accelerationIncludingGravity.y;
+        //z = event.accelerationIncludingGravity.z;
+        console.log(event)
+        }
+    ,true);
+window.addEventListener('deviceorientation', function(event){
+        alpha = event.alpha;
+        gamma = event.gamma;
+        beta = event.beta;
+        }
+    ,true);
+
+//Events that are running always
+if (window.DeviceMotionEvent) {
+    console.log("devicemotion was defined");
+};
+
+if (window.DeviceOrientationEvent) {
+  console.log("GyroScope was defined");
+};
+
+/////////////////////////////////
+
 const fillColor = 'white';
 const strokeColor = '#373737';
 const backgroundColor = '#efefef';
