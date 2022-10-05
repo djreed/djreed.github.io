@@ -3,37 +3,9 @@
 // that I've found so far
 // (https://github.com/liabru/matter-js/blob/master/build/matter.min.js)
 
-/////////////////////////////////
-window.addEventListener("devicemotion", function(event){
-        //x = event.accelerationIncludingGravity.x;
-        //y = event.accelerationIncludingGravity.y;
-        //z = event.accelerationIncludingGravity.z;
-        console.log(event)
-        }
-    ,true);
-window.addEventListener('deviceorientation', function(event){
-        alpha = event.alpha;
-        gamma = event.gamma;
-        beta = event.beta;
-        }
-    ,true);
-
-//Events that are running always
-if (window.DeviceMotionEvent) {
-    console.log("devicemotion was defined", window.DeviceMotionEvent);
-};
-
-if (window.DeviceOrientationEvent) {
-  console.log("GyroScope was defined", window.DeviceOrientationEvent);
-};
-
-/////////////////////////////////
-
 const fillColor = 'white';
 const strokeColor = '#373737';
 const backgroundColor = '#efefef';
-
-var _window = window;
 
 // auxiliary functions
 var aux = {};
@@ -43,7 +15,7 @@ aux.degreesToRadians = function (degrees) {
   return degrees * Math.PI / 180; 
 };
 
-// Rather than use JQuery for element parameters
+// Rather than use JQuery for element offset
 // Source: https://youmightnotneedjquery.com/
 aux.offset = function (el) {
   box = el.getBoundingClientRect();
@@ -242,7 +214,7 @@ function prepareCanvas(options) {
   // On mobile windows screen space is too important, so don't collide w/ card
   if (MOBILE_OR_APPLE) {
     // no mouse control in mobile
-    if (_window.DeviceMotionEvent !== undefined) {
+    if (window.DeviceMotionEvent !== undefined) {
       console.log("DeviceMotion active, adding mobile roof and gravity functions")
       // mobile roof
       World.add(world, [
@@ -260,9 +232,8 @@ function prepareCanvas(options) {
         ),
       ]);
       
-      _window.addEventListener('devicemotion', function(e) {
-        console.log('devicemotion', e)
-        
+      window.addEventListener('devicemotion', function(e) {
+        // console.log('devicemotion', e)
         var ax = e.accelerationIncludingGravity.x * 0.6;
         var ay = e.accelerationIncludingGravity.y * 0.6;
         
@@ -273,7 +244,7 @@ function prepareCanvas(options) {
         };
       }, true); // Capture before bubbling anywhere
     } else {
-      console.log("window.DeviceMotionEvent is undefined, unable to enable motion control")
+      // console.log("window.DeviceMotionEvent is undefined, unable to enable motion control")
     }
 
   } else {
@@ -382,7 +353,7 @@ var win = window,
     body = doc.getElementsByTagName('body')[0],
     width = win.innerWidth || docElem.clientWidth || body.clientWidth,
     height = win.innerHeight|| docElem.clientHeight|| body.clientHeight;
-console.log(width + ' × ' + height);
+// console.log(width + ' × ' + height);
 
 var matterCtrl = prepareCanvas({
   canvas: document.querySelector('#gravity-canvas'),
