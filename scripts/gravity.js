@@ -210,7 +210,7 @@ $(function () {
           ),
         ]);
         
-        window.addEventListener('devicemotion', function(e) => {
+        window.addEventListener('devicemotion', function(e) {
           // console.log('devicemotion')
 
           var ax = e.accelerationIncludingGravity.x * 0.6;
