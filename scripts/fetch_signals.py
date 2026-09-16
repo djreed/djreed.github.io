@@ -22,33 +22,27 @@ WEEKS_BACK = 8
 SERIES = {
     "GASDESW": (
         "Retail diesel price ($/gal, weekly)", "lower",
-        "Watch for the price to stop making new highs and start correcting — "
-        "that's the signal demand destruction is working, not the absolute level.",
+        "Watch for the peak, not the price.",
     ),
     "DCOILWTICO": (
         "WTI crude oil ($/bbl, daily)", "lower",
-        "Same idea as diesel: a peak-and-roll-over pattern, not a specific price target.",
+        "Same — watch for the peak, not the price.",
     ),
     "BAMLH0A0HYM2": (
         "High-yield credit spread (%, daily)", "lower",
-        "One of the best leading indicators historically — spreads often peak "
-        "and start narrowing weeks to months before stocks bottom.",
+        "Best leading indicator here — watch for it to peak and narrow.",
     ),
     "T10Y2Y": (
         "10Y-2Y Treasury spread (%, daily)", "higher",
-        "Watch for re-steepening after inversion (short rates falling faster "
-        "than long rates as the Fed cuts) — this has historically coincided "
-        "with equity bottoms.",
+        "Watch for re-steepening after inversion.",
     ),
     "ICSA": (
         "Initial jobless claims (weekly)", "lower",
-        "Watch for claims to plateau and roll over, not necessarily fall in "
-        "absolute terms yet — the deceleration itself is the signal.",
+        "Watch for claims to plateau, then roll over.",
     ),
     "VIXCLS": (
         "VIX volatility index (daily)", "lower",
-        "Elevated and rising = still in the acute/capitulation phase. "
-        "Elevated but falling = fear is draining out.",
+        "Rising = bad. Falling = good.",
     ),
 }
 
