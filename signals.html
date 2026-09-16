@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David Reed — signals</title>
+<link rel="shortcut icon" type="image/x-icon" href="assets/frog.ico">
+<link rel="stylesheet" type="text/css" href="styles/styles.css">
+<style>
+  /* Page-specific overrides — the base stylesheet centers one fixed-height
+     card in a 100vh section, which doesn't work for a scrollable list.
+     Everything else (font, colors, card/json conventions) is inherited. */
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  #signals-content {
+    height: auto;
+    min-height: 100vh;
+    padding: 2em 1em;
+    align-items: center;
+  }
+  #signals-card {
+    width: 100%;
+    max-width: 640px;
+  }
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1em;
+    font-size: 0.9em;
+  }
+  .json__meta {
+    color: #373737;
+    opacity: 0.6;
+    font-size: 0.85em;
+    margin: 0 0 1em 1em;
+  }
+  .json__summary {
+    margin: 0 0 1em 1em;
+    font-weight: bold;
+  }
+  .signal-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.25em 1em;
+  }
+  .signal-detail {
+    opacity: 0.6;
+    font-size: 0.85em;
+    display: block;
+    margin-top: 0.15em;
+  }
+  .signal-flag {
+    white-space: nowrap;
+    font-size: 0.9em;
+  }
+  .signal-flag.improving::before { content: "// improving"; opacity: 0.6; }
+  .signal-flag.watching::before { content: "// watching"; color: #c23127; }
+  .json__note {
+    opacity: 0.6;
+    font-size: 0.85em;
+    line-height: 1.5;
+    margin: 1em 1em 0 1em;
+  }
+  .error { color: #c23127; }
+</style>
+</head>
+<body>
+<section id="signals-content">
+  <a class="back-link" href="index.html">&larr; back</a>
+  <div id="signals-card" class="card json">
+    <div class="card__contents">
+      <div class="json__bracket">{</div>
+      <div class="json__meta" id="meta">loading…</div>
+      <div class="json__summary" id="summary"></div>
+      <ul class="json__content" id="signals"></ul>
+      <div class="json__note">
+        weight-of-evidence tracker, not a buy signal. several of these
+        turning together has historically coincided with better entry
+        points in past downturns — no single reading times a bottom.
+        general market history, not personalized financial advice.
+      </div>
+      <div class="json__bracket">}</div>
+    </div>
+  </div>
+</section>
+
+<script>
+async function loadSignals() {
+  const metaEl = document.getElementById("meta");
+  const summaryEl = document.getElementById("summary");
+  const listEl = document.getElementById("signals");
+
+  try {
+    const res = await fetch("./signals.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("signals.json not found yet");
+    const data = await res.json();
+
+    const generated = new Date(data.generated_at);
+    metaEl.textContent = `"updated": "${generated.toLocaleString()}", "lookback": "${data.lookback_weeks}w"`;
+
+    summaryEl.textContent = `"improving": ${data.improving_count}/${data.total_count}`;
+
+    listEl.innerHTML = "";
+    data.signals.forEach(sig => {
+      const li = document.createElement("li");
+      li.className = "json__item";
+
+      if (sig.error) {
+        li.innerHTML = `"${sig.name || sig.id}": <span class="error">error — ${sig.error}</span>`;
+      } else {
+        const flagClass = sig.improving ? "improving" : "watching";
+        const sign = sig.change > 0 ? "+" : "";
+        li.innerHTML = `
+          <div class="signal-row">
+            <span>"${sig.name}"</span>
+            <span class="signal-flag ${flagClass}"></span>
+          </div>
+          <span class="signal-detail">
+            ${sig.latest_date}: ${sig.latest_value} vs ${sig.compare_date}: ${sig.compare_value}
+            (${sign}${sig.change}, ${sign}${sig.pct_change}%)
+          </span>`;
+      }
+      listEl.appendChild(li);
+    });
+  } catch (err) {
+    metaEl.textContent = "";
+    summaryEl.innerHTML = `<span class="error">couldn't load signals.json — has the GitHub Action run yet? (${err.message})</span>`;
+  }
+}
+
+loadSignals();
+</script>
+</body>
+</html>
