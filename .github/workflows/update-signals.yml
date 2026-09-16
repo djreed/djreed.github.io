@@ -1,0 +1,38 @@
+name: Update macro signals
+
+on:
+  schedule:
+    # Runs weekdays at 12:00 UTC (adjust to taste). Cron is UTC always.
+    - cron: "0 12 * * 1-5"
+  workflow_dispatch: {}  # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update-signals:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch signals
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python scripts/fetch_signals.py
+
+      - name: Commit updated signals.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add signals.json
+          git diff --cached --quiet || git commit -m "Update signals.json [automated]"
+          git push
