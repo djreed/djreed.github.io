@@ -55,14 +55,10 @@ SERIES = {
 # Overall read based on how many of the signals above are flashing "improving"
 # at once — a simple weight-of-evidence framing, not a trading signal.
 PHASE_GUIDANCE = [
-    (0, "Acute phase — most signals still deteriorating. Historically not "
-        "a phase to be deploying capital; hold dry powder."),
-    (2, "Early transition — a couple of signals turning. Some historical "
-        "precedent (2009, 2020) for starting small, tentative tranches here, "
-        "but conviction should stay low."),
-    (4, "Broad turn — a majority of signals improving together. This is "
-        "historically closer to the window where dollar-cost-averaging in "
-        "more meaningfully has paid off."),
+    (0, "Acute phase — most signals still getting worse. This is the "
+        "'freak out and sell everything' phase. Don't. Just wait."),
+    (2, "Early transition — a few signals turning. Maybe buy a little."),
+    (4, "Broad turn — most signals improving. Buy low, sell high time."),
 ]
 
 
