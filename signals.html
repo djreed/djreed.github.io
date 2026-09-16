@@ -85,25 +85,14 @@
     font-weight: bold;
   }
   .signal-change.watching { color: #c23127; }
+  .signal-change.turning { color: #c23127; opacity: 0.7; }
   .signal-change.improving { color: #373737; }
-  .signal-watch {
-    display: block;
-    margin-top: 0.35em;
-    font-size: 0.85em;
-    font-style: italic;
-    opacity: 0.8;
-  }
-  .signal-watch-label {
-    font-style: normal;
-    font-weight: bold;
-    opacity: 1;
-    margin-right: 0.35em;
-  }
   .signal-flag {
     white-space: nowrap;
     font-size: 0.9em;
   }
   .signal-flag.improving::before { content: "// improving"; opacity: 0.6; }
+  .signal-flag.turning::before { content: "// turning"; color: #c23127; opacity: 0.7; font-style: italic; }
   .signal-flag.watching::before { content: "// watching"; color: #c23127; font-weight: bold; }
   .json__note {
     opacity: 0.6;
@@ -161,7 +150,7 @@ async function loadSignals() {
       if (sig.error) {
         li.innerHTML = `"${sig.name || sig.id}": <span class="error">error — ${sig.error}</span>`;
       } else {
-        const flagClass = sig.improving ? "improving" : "watching";
+        const flagClass = sig.state;
         const sign = sig.change > 0 ? "+" : "";
         li.innerHTML = `
           <div class="signal-row">
@@ -172,8 +161,7 @@ async function loadSignals() {
             <span class="signal-label">latest</span> <span class="signal-value">${sig.latest_value}</span> <span class="signal-label">(${sig.latest_date})</span>
             <span class="signal-label">vs</span> <span class="signal-value signal-value--prior">${sig.compare_value}</span> <span class="signal-label">(${sig.compare_date}, ${data.lookback_weeks}w ago)</span>
             <span class="signal-change ${flagClass}">${sign}${sig.change}&nbsp;/&nbsp;${sign}${sig.pct_change}%</span>
-          </span>
-          <span class="signal-watch"><span class="signal-watch-label">watch:</span>${sig.watch_for || ""}</span>`;
+          </span>`;
       }
       listEl.appendChild(li);
     });

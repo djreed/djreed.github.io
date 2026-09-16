@@ -34,11 +34,14 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python scripts/fetch_signals.py
 
+      - name: Analyze signals
+        run: python scripts/analyze_signals.py
+
       - name: Commit updated signals.json
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/signals.json
+          git add assets/signals_raw.json assets/signals.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
