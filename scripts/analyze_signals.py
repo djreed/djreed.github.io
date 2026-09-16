@@ -9,7 +9,6 @@ hitting the FRED API. See fetch_signals.py for the fetch step.
 """
 
 import json
-from datetime import datetime
 
 RAW_PATH = "assets/signals_raw.json"
 OUT_PATH = "assets/signals.json"
@@ -58,9 +57,28 @@ def classify(values, direction):
     return "improving" if retrace_frac >= TURN_THRESHOLD else "turning"
 
 
+def describe(state, net_favorable, weeks):
+    """
+    A one-line, data-derived read of *why* a signal got its state — the
+    shape-based state alone can't distinguish "genuinely better than N weeks
+    ago" from "retraced off a spike but still net worse", which is exactly
+    the nuance that a bare improving/watching flag loses.
+    """
+    if state == "watching":
+        return f"Still at its worst point of the last {weeks}w — no turn yet."
+    if state == "turning":
+        return (f"Off its recent extreme, and net better than {weeks}w ago."
+                if net_favorable else
+                f"Off its recent extreme, but still net worse than {weeks}w ago.")
+    return (f"Meaningfully better than {weeks}w ago."
+            if net_favorable else
+            f"Retraced off a recent spike, but still net worse than {weeks}w ago.")
+
+
 def main():
     with open(RAW_PATH) as f:
         raw = json.load(f)
+    weeks = raw["lookback_weeks"]
 
     results = []
     improving_count = 0
@@ -74,20 +92,27 @@ def main():
         obs = series["observations"]
         dates = [o["date"] for o in obs]
         values = [o["value"] for o in obs]
+        direction = series["direction"]
 
-        state = classify(values, series["direction"])
-        if state == "improving":
-            improving_count += 1
+        state = classify(values, direction)
 
         latest_val, oldest_val = values[-1], values[0]
         change = latest_val - oldest_val
         pct_change = (change / oldest_val * 100) if oldest_val else 0
+        net_favorable = (change < 0) if direction == "lower" else (change > 0)
+
+        # Only count toward the overall read if it's both shape-improving
+        # *and* actually net better over the full window — a retracement off
+        # an in-window spike that's still net worse shouldn't move the needle.
+        if state == "improving" and net_favorable:
+            improving_count += 1
 
         results.append({
             "id": series_id,
             "name": name,
-            "direction": series["direction"],
+            "direction": direction,
             "state": state,
+            "note": describe(state, net_favorable, weeks),
             "latest_date": dates[-1],
             "latest_value": round(latest_val, 3),
             "compare_date": dates[0],
@@ -98,7 +123,7 @@ def main():
 
     output = {
         "generated_at": raw["generated_at"],
-        "lookback_weeks": raw["lookback_weeks"],
+        "lookback_weeks": weeks,
         "improving_count": improving_count,
         "total_count": len([r for r in results if "error" not in r]),
         "phase_read": phase_read(improving_count),

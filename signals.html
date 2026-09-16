@@ -94,11 +94,66 @@
   .signal-flag.improving::before { content: "// improving"; opacity: 0.6; }
   .signal-flag.turning::before { content: "// turning"; color: #c23127; opacity: 0.7; font-style: italic; }
   .signal-flag.watching::before { content: "// watching"; color: #c23127; font-weight: bold; }
-  .json__note {
-    opacity: 0.6;
+  .signal-name {
+    color: #373737;
+    text-decoration: underline;
+  }
+  .signal-name:hover, .signal-name:focus {
+    color: #c23127;
+    outline: none;
+  }
+  .signal-note {
+    display: block;
+    margin-top: 0.35em;
     font-size: 0.85em;
-    line-height: 1.5;
+    font-style: italic;
+    opacity: 0.75;
+  }
+  .sparkline {
+    display: block;
+    margin-top: 0.5em;
+    width: 100%;
+    max-width: 240px;
+    height: 48px;
+  }
+  .spark-axis {
+    stroke: #373737;
+    stroke-width: 1;
+    opacity: 0.35;
+  }
+  .spark-line {
+    fill: none;
+    stroke: #373737;
+    stroke-width: 1.5;
+    opacity: 0.8;
+  }
+  .spark-trend {
+    stroke-width: 1.25;
+    stroke-dasharray: 3 2;
+  }
+  .spark-trend.improving { stroke: #373737; }
+  .spark-trend.watching { stroke: #c23127; }
+  .spark-label {
+    font-size: 6px;
+    font-family: monospace;
+    fill: #373737;
+    opacity: 0.55;
+  }
+  .spark-label--right {
+    text-anchor: end;
+  }
+  .json__source {
     margin: 1em 1em 0 1em;
+    padding-top: 0.75em;
+    border-top: 1px solid #dcdcdc;
+    font-size: 0.85em;
+    opacity: 0.7;
+  }
+  .json__source a {
+    color: #373737;
+  }
+  .json__source a:hover, .json__source a:focus {
+    color: #c23127;
   }
   .error { color: #c23127; }
 </style>
@@ -113,11 +168,8 @@
       <div class="json__summary" id="summary"></div>
       <div class="json__phase" id="phase"></div>
       <ul class="json__content" id="signals"></ul>
-      <div class="json__note">
-        weight-of-evidence tracker, not a buy signal. several of these
-        turning together has historically coincided with better entry
-        points in past downturns — no single reading times a bottom.
-        general market history, not personalized financial advice.
+      <div class="json__source">
+        data: <a href="https://fred.stlouisfed.org" target="_blank" rel="noopener">Federal Reserve Economic Data (FRED)</a>
       </div>
       <div class="json__bracket">}</div>
     </div>
@@ -125,6 +177,55 @@
 </section>
 
 <script>
+// Minimal inline-SVG sparkline: raw values, a dashed OLS trendline, and a
+// bare min/max + date axis. No charting library for six tiny arrays.
+function buildSparkline(observations, direction) {
+  const values = observations.map(o => o.value);
+  const n = values.length;
+  if (n < 2) return "";
+
+  const width = 240, height = 48;
+  const padL = 30, padR = 4, padT = 4, padB = 12;
+  const plotW = width - padL - padR;
+  const plotH = height - padT - padB;
+
+  const minV = Math.min(...values), maxV = Math.max(...values);
+  const range = maxV - minV || 1;
+  const xAt = i => padL + (i / (n - 1)) * plotW;
+  const yAt = v => padT + (1 - (v - minV) / range) * plotH;
+
+  const points = values.map((v, i) => `${xAt(i).toFixed(1)},${yAt(v).toFixed(1)}`).join(" ");
+
+  const xs = values.map((_, i) => i);
+  const xMean = xs.reduce((a, b) => a + b, 0) / n;
+  const yMean = values.reduce((a, b) => a + b, 0) / n;
+  let num = 0, den = 0;
+  for (let i = 0; i < n; i++) {
+    num += (xs[i] - xMean) * (values[i] - yMean);
+    den += (xs[i] - xMean) ** 2;
+  }
+  const slope = den ? num / den : 0;
+  const trendStartV = yMean - slope * xMean;
+  const trendEndV = trendStartV + slope * (n - 1);
+  const trendFavorable = direction === "lower" ? slope < 0 : slope > 0;
+
+  const fmt = v => Math.abs(v) >= 1000 ? Math.round(v).toLocaleString() : Math.round(v * 100) / 100;
+
+  return `
+    <svg class="sparkline" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none">
+      <line class="spark-axis" x1="${padL}" y1="${padT}" x2="${padL}" y2="${height - padB}" />
+      <line class="spark-axis" x1="${padL}" y1="${height - padB}" x2="${width - padR}" y2="${height - padB}" />
+      <text class="spark-label" x="0" y="${padT + 6}">${fmt(maxV)}</text>
+      <text class="spark-label" x="0" y="${height - padB}">${fmt(minV)}</text>
+      <text class="spark-label" x="${padL}" y="${height}">${observations[0].date}</text>
+      <text class="spark-label spark-label--right" x="${width - padR}" y="${height}">${observations[n - 1].date}</text>
+      <polyline class="spark-line" points="${points}" />
+      <line class="spark-trend ${trendFavorable ? "improving" : "watching"}"
+            x1="${xAt(0).toFixed(1)}" y1="${yAt(trendStartV).toFixed(1)}"
+            x2="${xAt(n - 1).toFixed(1)}" y2="${yAt(trendEndV).toFixed(1)}" />
+    </svg>`;
+}
+
 async function loadSignals() {
   const metaEl = document.getElementById("meta");
   const summaryEl = document.getElementById("summary");
@@ -135,6 +236,14 @@ async function loadSignals() {
     const res = await fetch("./assets/signals.json", { cache: "no-store" });
     if (!res.ok) throw new Error("assets/signals.json not found yet");
     const data = await res.json();
+
+    // Charts are a nice-to-have — if the raw file is missing or fails to
+    // parse, the core dashboard should still render without them.
+    let rawSeries = {};
+    try {
+      const rawRes = await fetch("./assets/signals_raw.json", { cache: "no-store" });
+      if (rawRes.ok) rawSeries = (await rawRes.json()).series || {};
+    } catch (_) {}
 
     const generated = new Date(data.generated_at);
     metaEl.textContent = `"updated": "${generated.toLocaleString()}", "lookback": "${data.lookback_weeks}w"`;
@@ -152,16 +261,23 @@ async function loadSignals() {
       } else {
         const flagClass = sig.state;
         const sign = sig.change > 0 ? "+" : "";
+        const series = rawSeries[sig.id];
+        const sparkline = series && series.observations
+          ? buildSparkline(series.observations, sig.direction)
+          : "";
+
         li.innerHTML = `
           <div class="signal-row">
-            <span>"${sig.name}"</span>
+            <span>"<a class="signal-name" href="https://fred.stlouisfed.org/series/${sig.id}" target="_blank" rel="noopener">${sig.name}</a>"</span>
             <span class="signal-flag ${flagClass}"></span>
           </div>
           <span class="signal-detail">
             <span class="signal-label">latest</span> <span class="signal-value">${sig.latest_value}</span> <span class="signal-label">(${sig.latest_date})</span>
             <span class="signal-label">vs</span> <span class="signal-value signal-value--prior">${sig.compare_value}</span> <span class="signal-label">(${sig.compare_date}, ${data.lookback_weeks}w ago)</span>
             <span class="signal-change ${flagClass}">${sign}${sig.change}&nbsp;/&nbsp;${sign}${sig.pct_change}%</span>
-          </span>`;
+          </span>
+          ${sparkline}
+          <span class="signal-note">${sig.note || ""}</span>`;
       }
       listEl.appendChild(li);
     });
