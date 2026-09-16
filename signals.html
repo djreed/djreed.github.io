@@ -94,8 +94,8 @@ async function loadSignals() {
   const listEl = document.getElementById("signals");
 
   try {
-    const res = await fetch("./signals.json", { cache: "no-store" });
-    if (!res.ok) throw new Error("signals.json not found yet");
+    const res = await fetch("./assets/signals.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("assets/signals.json not found yet");
     const data = await res.json();
 
     const generated = new Date(data.generated_at);

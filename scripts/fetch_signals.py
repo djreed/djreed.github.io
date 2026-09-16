@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fetches macro signal data from FRED and writes signals.json.
+Fetches macro signal data from FRED and writes assets/signals.json.
 
 This runs server-side inside a GitHub Actions runner (not in the browser),
 which is why it can call the FRED API directly with a secret key without
@@ -95,10 +95,11 @@ def main():
         "signals": results,
     }
 
-    with open("signals.json", "w") as f:
+    os.makedirs("assets", exist_ok=True)
+    with open("assets/signals.json", "w") as f:
         json.dump(output, f, indent=2)
 
-    print(f"Wrote signals.json — {improving_count}/{output['total_count']} improving")
+    print(f"Wrote assets/signals.json — {improving_count}/{output['total_count']} improving")
 
 
 if __name__ == "__main__":
