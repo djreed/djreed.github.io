@@ -55,10 +55,9 @@ SERIES = {
 # Overall read based on how many of the signals above are flashing "improving"
 # at once — a simple weight-of-evidence framing, not a trading signal.
 PHASE_GUIDANCE = [
-    (0, "Acute phase — most signals still getting worse. This is the "
-        "'freak out and sell everything' phase. Don't. Just wait."),
-    (2, "Early transition — a few signals turning. Maybe buy a little."),
-    (4, "Broad turn — most signals improving. Buy low, sell high time."),
+    (0, "Acute phase — do NOT freak out and sell everything"),
+    (2, "Early transition — maybe buy a little bit"),
+    (4, "Broad turn — freak out and buy everything"),
 ]
 
 
