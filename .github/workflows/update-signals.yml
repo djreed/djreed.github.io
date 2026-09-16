@@ -9,6 +9,11 @@ on:
 permissions:
   contents: write
 
+# Only one run (scheduled or manual) pushes to master at a time.
+concurrency:
+  group: update-signals
+  cancel-in-progress: false
+
 jobs:
   update-signals:
     runs-on: ubuntu-latest
@@ -34,5 +39,21 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add assets/signals.json
-          git diff --cached --quiet || git commit -m "Update signals.json [automated]"
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Update signals.json [automated]"
+          # master may have moved (concurrent run, or a manual push) since checkout —
+          # rebase onto the current tip and retry a few times before giving up.
+          # -X ours: this file is machine-generated, so the freshly-fetched data wins.
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              exit 0
+            fi
+            git fetch origin master
+            git rebase -X ours origin/master
+            sleep $((attempt * 3))
+          done
+          echo "Failed to push after retries." >&2
+          exit 1
