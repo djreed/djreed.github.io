@@ -1,0 +1,73 @@
+{
+  "generated_at": "2026-09-16T22:52:27Z",
+  "lookback_weeks": 8,
+  "improving_count": 0,
+  "total_count": 5,
+  "signals": [
+    {
+      "id": "GASDESW",
+      "name": "Retail diesel price ($/gal, weekly)",
+      "direction": "lower",
+      "latest_date": "2026-09-14",
+      "latest_value": 6.285,
+      "compare_date": "2026-07-27",
+      "compare_value": 5.313,
+      "change": 0.972,
+      "pct_change": 18.29,
+      "improving": false
+    },
+    {
+      "id": "DCOILWTICO",
+      "name": "WTI crude oil ($/bbl, daily)",
+      "direction": "lower",
+      "latest_date": "2026-09-15",
+      "latest_value": 107.02,
+      "compare_date": "2026-07-22",
+      "compare_value": 87.66,
+      "change": 19.36,
+      "pct_change": 22.09,
+      "improving": false
+    },
+    {
+      "id": "BAMLH0A0HYM2",
+      "name": "High-yield credit spread (%, daily)",
+      "error": "HTTPSConnectionPool(host='api.stlouisfed.org', port=443): Read timed out. (read timeout=15)"
+    },
+    {
+      "id": "T10Y2Y",
+      "name": "10Y-2Y Treasury spread (%, daily)",
+      "direction": "higher",
+      "latest_date": "2026-09-16",
+      "latest_value": 0.27,
+      "compare_date": "2026-07-22",
+      "compare_value": 0.36,
+      "change": -0.09,
+      "pct_change": -25.0,
+      "improving": false
+    },
+    {
+      "id": "ICSA",
+      "name": "Initial jobless claims (weekly)",
+      "direction": "lower",
+      "latest_date": "2026-09-05",
+      "latest_value": 206000.0,
+      "compare_date": "2026-07-25",
+      "compare_value": 198000.0,
+      "change": 8000.0,
+      "pct_change": 4.04,
+      "improving": false
+    },
+    {
+      "id": "VIXCLS",
+      "name": "VIX volatility index (daily)",
+      "direction": "lower",
+      "latest_date": "2026-09-15",
+      "latest_value": 17.2,
+      "compare_date": "2026-07-22",
+      "compare_value": 16.64,
+      "change": 0.56,
+      "pct_change": 3.37,
+      "improving": false
+    }
+  ]
+}
