@@ -18,18 +18,63 @@ import requests
 FRED_BASE = "https://api.stlouisfed.org/fred/series/observations"
 WEEKS_BACK = 8
 
-# series_id -> (friendly name, "lower is improving" or "higher is improving")
+# series_id -> (friendly name, "lower is improving" or "higher is improving", what to watch for)
 SERIES = {
-    "GASDESW":      ("Retail diesel price ($/gal, weekly)", "lower"),
-    "DCOILWTICO":   ("WTI crude oil ($/bbl, daily)",         "lower"),
-    "BAMLH0A0HYM2": ("High-yield credit spread (%, daily)",  "lower"),
-    "T10Y2Y":       ("10Y-2Y Treasury spread (%, daily)",    "higher"),
-    "ICSA":         ("Initial jobless claims (weekly)",      "lower"),
-    "VIXCLS":       ("VIX volatility index (daily)",         "lower"),
+    "GASDESW": (
+        "Retail diesel price ($/gal, weekly)", "lower",
+        "Watch for the price to stop making new highs and start correcting — "
+        "that's the signal demand destruction is working, not the absolute level.",
+    ),
+    "DCOILWTICO": (
+        "WTI crude oil ($/bbl, daily)", "lower",
+        "Same idea as diesel: a peak-and-roll-over pattern, not a specific price target.",
+    ),
+    "BAMLH0A0HYM2": (
+        "High-yield credit spread (%, daily)", "lower",
+        "One of the best leading indicators historically — spreads often peak "
+        "and start narrowing weeks to months before stocks bottom.",
+    ),
+    "T10Y2Y": (
+        "10Y-2Y Treasury spread (%, daily)", "higher",
+        "Watch for re-steepening after inversion (short rates falling faster "
+        "than long rates as the Fed cuts) — this has historically coincided "
+        "with equity bottoms.",
+    ),
+    "ICSA": (
+        "Initial jobless claims (weekly)", "lower",
+        "Watch for claims to plateau and roll over, not necessarily fall in "
+        "absolute terms yet — the deceleration itself is the signal.",
+    ),
+    "VIXCLS": (
+        "VIX volatility index (daily)", "lower",
+        "Elevated and rising = still in the acute/capitulation phase. "
+        "Elevated but falling = fear is draining out.",
+    ),
 }
 
+# Overall read based on how many of the signals above are flashing "improving"
+# at once — a simple weight-of-evidence framing, not a trading signal.
+PHASE_GUIDANCE = [
+    (0, "Acute phase — most signals still deteriorating. Historically not "
+        "a phase to be deploying capital; hold dry powder."),
+    (2, "Early transition — a couple of signals turning. Some historical "
+        "precedent (2009, 2020) for starting small, tentative tranches here, "
+        "but conviction should stay low."),
+    (4, "Broad turn — a majority of signals improving together. This is "
+        "historically closer to the window where dollar-cost-averaging in "
+        "more meaningfully has paid off."),
+]
 
-def fetch_series(series_id, api_key, weeks_back=WEEKS_BACK):
+
+def phase_read(improving_count):
+    label = PHASE_GUIDANCE[0][1]
+    for threshold, text in PHASE_GUIDANCE:
+        if improving_count >= threshold:
+            label = text
+    return label
+
+
+def fetch_series(series_id, api_key, weeks_back=WEEKS_BACK, retries=2):
     start = (datetime.utcnow() - timedelta(weeks=weeks_back)).strftime("%Y-%m-%d")
     params = {
         "series_id": series_id,
@@ -38,10 +83,16 @@ def fetch_series(series_id, api_key, weeks_back=WEEKS_BACK):
         "observation_start": start,
         "sort_order": "desc",
     }
-    resp = requests.get(FRED_BASE, params=params, timeout=15)
-    resp.raise_for_status()
-    obs = resp.json().get("observations", [])
-    return [(o["date"], o["value"]) for o in obs if o["value"] != "."]
+    last_err = None
+    for attempt in range(retries + 1):
+        try:
+            resp = requests.get(FRED_BASE, params=params, timeout=20)
+            resp.raise_for_status()
+            obs = resp.json().get("observations", [])
+            return [(o["date"], o["value"]) for o in obs if o["value"] != "."]
+        except Exception as e:
+            last_err = e
+    raise last_err
 
 
 def main():
@@ -53,7 +104,7 @@ def main():
     results = []
     improving_count = 0
 
-    for series_id, (name, direction) in SERIES.items():
+    for series_id, (name, direction, watch_for) in SERIES.items():
         try:
             obs = fetch_series(series_id, api_key)
             if len(obs) < 2:
@@ -76,6 +127,7 @@ def main():
                 "id": series_id,
                 "name": name,
                 "direction": direction,
+                "watch_for": watch_for,
                 "latest_date": latest_date,
                 "latest_value": round(latest_val, 3),
                 "compare_date": oldest_date,
@@ -92,6 +144,7 @@ def main():
         "lookback_weeks": WEEKS_BACK,
         "improving_count": improving_count,
         "total_count": len([r for r in results if "error" not in r]),
+        "phase_read": phase_read(improving_count),
         "signals": results,
     }
 

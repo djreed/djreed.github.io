@@ -39,6 +39,15 @@
     margin: 0 0 1em 1em;
     font-weight: bold;
   }
+  .json__phase {
+    margin: 0 0 1.5em 1em;
+    padding: 0.75em 1em;
+    background: #efefef;
+    border-left: 3px solid #373737;
+    font-size: 0.9em;
+    line-height: 1.5;
+    font-weight: normal;
+  }
   .signal-row {
     display: flex;
     justify-content: space-between;
@@ -51,6 +60,13 @@
     font-size: 0.85em;
     display: block;
     margin-top: 0.15em;
+  }
+  .signal-watch {
+    font-size: 0.85em;
+    font-style: italic;
+    opacity: 0.75;
+    display: block;
+    margin-top: 0.3em;
   }
   .signal-flag {
     white-space: nowrap;
@@ -75,6 +91,7 @@
       <div class="json__bracket">{</div>
       <div class="json__meta" id="meta">loading…</div>
       <div class="json__summary" id="summary"></div>
+      <div class="json__phase" id="phase"></div>
       <ul class="json__content" id="signals"></ul>
       <div class="json__note">
         weight-of-evidence tracker, not a buy signal. several of these
@@ -91,6 +108,7 @@
 async function loadSignals() {
   const metaEl = document.getElementById("meta");
   const summaryEl = document.getElementById("summary");
+  const phaseEl = document.getElementById("phase");
   const listEl = document.getElementById("signals");
 
   try {
@@ -102,6 +120,7 @@ async function loadSignals() {
     metaEl.textContent = `"updated": "${generated.toLocaleString()}", "lookback": "${data.lookback_weeks}w"`;
 
     summaryEl.textContent = `"improving": ${data.improving_count}/${data.total_count}`;
+    phaseEl.textContent = data.phase_read || "";
 
     listEl.innerHTML = "";
     data.signals.forEach(sig => {
@@ -121,12 +140,14 @@ async function loadSignals() {
           <span class="signal-detail">
             ${sig.latest_date}: ${sig.latest_value} vs ${sig.compare_date}: ${sig.compare_value}
             (${sign}${sig.change}, ${sign}${sig.pct_change}%)
-          </span>`;
+          </span>
+          <span class="signal-watch">${sig.watch_for || ""}</span>`;
       }
       listEl.appendChild(li);
     });
   } catch (err) {
     metaEl.textContent = "";
+    phaseEl.textContent = "";
     summaryEl.innerHTML = `<span class="error">couldn't load signals.json — has the GitHub Action run yet? (${err.message})</span>`;
   }
 }
