@@ -214,25 +214,30 @@ function prepareCanvas(options) {
   // On mobile windows screen space is too important, so don't collide w/ card
   if (MOBILE_OR_APPLE) {
     // no mouse control in mobile
-    if (window.DeviceMotionEvent !== undefined) {
-      console.debug("DeviceMotion active, adding mobile roof and gravity functions")
-      // mobile roof
-      World.add(world, [
-        Bodies.rectangle(
-          canvasWidth / 2,
-          (-1 * (wallWidth / 2)),
-          canvasWidth,
-          wallWidth,
-          {
-            isStatic: true,
-            render: {
-              visible: false,
-            }
+    // mobile roof -- independent of whether motion permission ends up granted
+    World.add(world, [
+      Bodies.rectangle(
+        canvasWidth / 2,
+        (-1 * (wallWidth / 2)),
+        canvasWidth,
+        wallWidth,
+        {
+          isStatic: true,
+          render: {
+            visible: false,
           }
-        ),
-      ]);
-      
+        }
+      ),
+    ]);
+
+    function attachMotionListener() {
+      console.debug("devicemotion listener attached")
       window.addEventListener('devicemotion', function(e) {
+        // Some devices report DeviceMotionEvent support but never populate
+        // accelerationIncludingGravity -- bail rather than throw on null.x
+        if (!e.accelerationIncludingGravity) {
+          return;
+        }
         console.debug('devicemotion', e)
         var ax = e.accelerationIncludingGravity.x * 0.6;
         var ay = e.accelerationIncludingGravity.y * 0.6;
@@ -243,8 +248,31 @@ function prepareCanvas(options) {
           y: ay * -1, // south to north axis, so inverse is "ground-facing"
         };
       }, true); // Capture before bubbling anywhere
-    } else {
+    }
+
+    if (typeof DeviceMotionEvent === 'undefined') {
       console.debug("window.DeviceMotionEvent is undefined, unable to enable motion control")
+    } else if (typeof DeviceMotionEvent.requestPermission === 'function') {
+      // iOS 13+ gates motion sensors behind an explicit permission prompt that
+      // must be triggered synchronously from a user gesture -- it can't be
+      // requested on page load, so wait for the first tap.
+      console.debug("DeviceMotionEvent.requestPermission required, waiting for first tap")
+      var requestMotionPermission = function () {
+        document.removeEventListener('touchend', requestMotionPermission);
+        DeviceMotionEvent.requestPermission().then(function (state) {
+          if (state === 'granted') {
+            attachMotionListener();
+          } else {
+            console.debug('DeviceMotion permission denied:', state);
+          }
+        }).catch(function (err) {
+          console.debug('DeviceMotion permission request failed:', err);
+        });
+      };
+      document.addEventListener('touchend', requestMotionPermission);
+    } else {
+      // Older iOS Safari / most Android Chrome -- no permission gate
+      attachMotionListener();
     }
 
   } else {
