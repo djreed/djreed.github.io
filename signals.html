@@ -268,7 +268,7 @@ async function loadSignals() {
           </div>
           <span class="signal-detail">
             <span class="signal-label">latest</span> <span class="signal-value">${sig.latest_value}</span> <span class="signal-label">(${sig.latest_date})</span>
-            <span class="signal-label">vs</span> <span class="signal-value signal-value--prior">${sig.compare_value}</span> <span class="signal-label">(${sig.compare_date}, ${data.lookback_weeks}w ago)</span>
+            <span class="signal-label">vs</span> <span class="signal-value signal-value--prior">${sig.compare_value}</span> <span class="signal-label">(${sig.compare_date})</span>
             <span class="signal-change ${flagClass}">${sign}${sig.change}&nbsp;/&nbsp;${sign}${sig.pct_change}%</span>
           </span>
           ${sparkline}`;

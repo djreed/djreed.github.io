@@ -23,6 +23,12 @@ OUT_PATH = "assets/signals.json"
 TURN_THRESHOLD = 0.25
 SMOOTHING_WINDOW = 3
 
+# A net change smaller than this fraction of the window's own range is noise,
+# not a real move either way -- e.g. a credit spread landing 0.01 off where it
+# started (3.7% of a 0.27-wide window) shouldn't get called "improving" any
+# more confidently than "worsening".
+NOISE_THRESHOLD = 0.05
+
 # Overall read based on how many of the signals are flashing "improving"
 # (shape-retraced AND net-favorable, see classify()) at once — a simple
 # weight-of-evidence framing, not a trading signal.
@@ -73,6 +79,10 @@ def classify(values, direction):
 
     latest_val, oldest_val = values[-1], values[0]
     change = latest_val - oldest_val
+    window_range = max(values) - min(values)
+    if window_range and abs(change) / window_range < NOISE_THRESHOLD:
+        return "recovering"  # net move is noise-level, not a genuine improvement
+
     net_favorable = (change < 0) if direction == "lower" else (change > 0)
     return "improving" if net_favorable else "recovering"
 
