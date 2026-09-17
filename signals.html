@@ -59,9 +59,19 @@
   .signal-row {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.25em 1em;
+    align-items: flex-start;
+    gap: 0.5em 1em;
+  }
+  .signal-main {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .signal-side {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
   }
   .signal-detail {
     display: block;
@@ -80,9 +90,10 @@
     opacity: 0.75;
   }
   .signal-change {
-    display: inline-block;
-    margin-left: 0.5em;
+    display: block;
+    margin-top: 0.3em;
     font-weight: bold;
+    white-space: nowrap;
   }
   .signal-change.watching { color: #c23127; }
   .signal-change.turning { color: #c23127; opacity: 0.7; }
@@ -263,14 +274,18 @@ async function loadSignals() {
 
         li.innerHTML = `
           <div class="signal-row">
-            <span>"<a class="signal-name" href="https://fred.stlouisfed.org/series/${sig.id}" target="_blank" rel="noopener">${sig.name}</a>"</span>
-            <span class="signal-flag ${flagClass}"></span>
+            <div class="signal-main">
+              <span>"<a class="signal-name" href="https://fred.stlouisfed.org/series/${sig.id}" target="_blank" rel="noopener">${sig.name}</a>"</span>
+              <span class="signal-detail">
+                <span class="signal-label">latest</span> <span class="signal-value">${sig.latest_value}</span> <span class="signal-label">(${sig.latest_date})</span>
+                <span class="signal-label">vs</span> <span class="signal-value signal-value--prior">${sig.compare_value}</span> <span class="signal-label">(${sig.compare_date})</span>
+              </span>
+            </div>
+            <div class="signal-side">
+              <span class="signal-flag ${flagClass}"></span>
+              <span class="signal-change ${flagClass}">${sign}${sig.change}&nbsp;/&nbsp;${sign}${sig.pct_change}%</span>
+            </div>
           </div>
-          <span class="signal-detail">
-            <span class="signal-label">latest</span> <span class="signal-value">${sig.latest_value}</span> <span class="signal-label">(${sig.latest_date})</span>
-            <span class="signal-label">vs</span> <span class="signal-value signal-value--prior">${sig.compare_value}</span> <span class="signal-label">(${sig.compare_date})</span>
-            <span class="signal-change ${flagClass}">${sign}${sig.change}&nbsp;/&nbsp;${sign}${sig.pct_change}%</span>
-          </span>
           ${sparkline}`;
       }
       listEl.appendChild(li);
