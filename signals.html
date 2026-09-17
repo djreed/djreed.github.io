@@ -86,12 +86,14 @@
   }
   .signal-change.watching { color: #c23127; }
   .signal-change.turning { color: #c23127; opacity: 0.7; }
+  .signal-change.recovering { color: #c23127; opacity: 0.45; }
   .signal-change.improving { color: #373737; }
   .signal-flag {
     white-space: nowrap;
     font-size: 0.9em;
   }
   .signal-flag.improving::before { content: "// improving"; opacity: 0.6; }
+  .signal-flag.recovering::before { content: "// recovering"; color: #c23127; opacity: 0.45; font-style: italic; }
   .signal-flag.turning::before { content: "// turning"; color: #c23127; opacity: 0.7; font-style: italic; }
   .signal-flag.watching::before { content: "// watching"; color: #c23127; font-weight: bold; }
   .signal-name {
@@ -101,13 +103,6 @@
   .signal-name:hover, .signal-name:focus {
     color: #c23127;
     outline: none;
-  }
-  .signal-note {
-    display: block;
-    margin-top: 0.35em;
-    font-size: 0.85em;
-    font-style: italic;
-    opacity: 0.75;
   }
   .sparkline {
     display: block;
@@ -276,8 +271,7 @@ async function loadSignals() {
             <span class="signal-label">vs</span> <span class="signal-value signal-value--prior">${sig.compare_value}</span> <span class="signal-label">(${sig.compare_date}, ${data.lookback_weeks}w ago)</span>
             <span class="signal-change ${flagClass}">${sign}${sig.change}&nbsp;/&nbsp;${sign}${sig.pct_change}%</span>
           </span>
-          ${sparkline}
-          <span class="signal-note">${sig.note || ""}</span>`;
+          ${sparkline}`;
       }
       listEl.appendChild(li);
     });

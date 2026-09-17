@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Reads assets/signals_raw.json and writes assets/signals.json — the
-"is this improving/turning/watching" classification the dashboard renders.
+watching/turning/recovering/improving classification the dashboard renders.
 
 Pure function of already-fetched data, so this can be re-run locally
 (`make analyze`) against cached data to tune the classification without
@@ -23,8 +23,9 @@ OUT_PATH = "assets/signals.json"
 TURN_THRESHOLD = 0.25
 SMOOTHING_WINDOW = 3
 
-# Overall read based on how many of the signals are flashing "improving" at
-# once — a simple weight-of-evidence framing, not a trading signal.
+# Overall read based on how many of the signals are flashing "improving"
+# (shape-retraced AND net-favorable, see classify()) at once — a simple
+# weight-of-evidence framing, not a trading signal.
 PHASE_GUIDANCE = [
     (0, "Acute phase — do NOT freak out and sell everything"),
     (2, "Early transition — maybe buy a little bit"),
@@ -40,8 +41,9 @@ def phase_read(improving_count):
     return label
 
 
-def classify(values, direction):
-    """watching / turning / improving, from the shape of the window alone."""
+def shape(values, direction):
+    """watching / turning / retraced, from the shape of the window alone —
+    says nothing about whether the window's net move was favorable."""
     worst = max(values) if direction == "lower" else min(values)
     # last occurrence, so a plateau at the extreme still reads as "still there"
     worst_idx = max(i for i, v in enumerate(values) if v == worst)
@@ -54,25 +56,25 @@ def classify(values, direction):
     window_range = max(values) - min(values)
     retrace_frac = abs(latest_avg - worst) / window_range if window_range else 0
 
-    return "improving" if retrace_frac >= TURN_THRESHOLD else "turning"
+    return "retraced" if retrace_frac >= TURN_THRESHOLD else "turning"
 
 
-def describe(state, net_favorable, weeks):
+def classify(values, direction):
     """
-    A one-line, data-derived read of *why* a signal got its state — the
-    shape-based state alone can't distinguish "genuinely better than N weeks
-    ago" from "retraced off a spike but still net worse", which is exactly
-    the nuance that a bare improving/watching flag loses.
+    watching / turning / recovering / improving. "recovering" and "improving"
+    are both shape="retraced" (off the window's worst point by a real margin)
+    but only "improving" is also net-favorable over the full window —
+    otherwise a signal that spiked and partly unwound reads as flat-out
+    "improving" while still being worse than it was N weeks ago.
     """
-    if state == "watching":
-        return f"Still at its worst point of the last {weeks}w — no turn yet."
-    if state == "turning":
-        return (f"Off its recent extreme, and net better than {weeks}w ago."
-                if net_favorable else
-                f"Off its recent extreme, but still net worse than {weeks}w ago.")
-    return (f"Meaningfully better than {weeks}w ago."
-            if net_favorable else
-            f"Retraced off a recent spike, but still net worse than {weeks}w ago.")
+    shape_state = shape(values, direction)
+    if shape_state != "retraced":
+        return shape_state
+
+    latest_val, oldest_val = values[-1], values[0]
+    change = latest_val - oldest_val
+    net_favorable = (change < 0) if direction == "lower" else (change > 0)
+    return "improving" if net_favorable else "recovering"
 
 
 def main():
@@ -99,12 +101,8 @@ def main():
         latest_val, oldest_val = values[-1], values[0]
         change = latest_val - oldest_val
         pct_change = (change / oldest_val * 100) if oldest_val else 0
-        net_favorable = (change < 0) if direction == "lower" else (change > 0)
 
-        # Only count toward the overall read if it's both shape-improving
-        # *and* actually net better over the full window — a retracement off
-        # an in-window spike that's still net worse shouldn't move the needle.
-        if state == "improving" and net_favorable:
+        if state == "improving":
             improving_count += 1
 
         results.append({
@@ -112,7 +110,6 @@ def main():
             "name": name,
             "direction": direction,
             "state": state,
-            "note": describe(state, net_favorable, weeks),
             "latest_date": dates[-1],
             "latest_value": round(latest_val, 3),
             "compare_date": dates[0],
