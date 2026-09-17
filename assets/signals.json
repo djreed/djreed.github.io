@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-17T00:09:12Z",
+  "generated_at": "2026-09-17T00:16:39Z",
   "lookback_weeks": 8,
-  "improving_count": 2,
+  "improving_count": 1,
   "total_count": 6,
-  "phase_read": "Early transition \u2014 maybe buy a little bit",
+  "phase_read": "Acute phase \u2014 do NOT freak out and sell everything",
   "signals": [
     {
       "id": "GASDESW",
@@ -33,7 +33,7 @@
       "id": "BAMLH0A0HYM2",
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
-      "state": "improving",
+      "state": "recovering",
       "latest_date": "2026-09-15",
       "latest_value": 2.76,
       "compare_date": "2026-07-23",
