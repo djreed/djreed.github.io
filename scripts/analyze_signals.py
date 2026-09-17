@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Reads assets/signals_raw.json and writes assets/signals.json — the
-watching/turning/recovering/improving classification the dashboard renders.
+flat/worsening/improving/volatile-worsening/volatile-improving
+classification the dashboard renders.
 
 Pure function of already-fetched data, so this can be re-run locally
 (`make analyze`) against cached data to tune the classification without
@@ -13,24 +14,20 @@ import json
 RAW_PATH = "assets/signals_raw.json"
 OUT_PATH = "assets/signals.json"
 
-# How far (as a fraction of the window's own high-low range) the latest
-# reading has to have retraced from the window's worst point before we call
-# it "turning" rather than just noise around the peak/trough. Averaging the
-# last 3 readings (not just the single latest print) further damps day-to-day
-# noise on the daily series (VIX, WTI, HY spread) — without it those flip
-# watching/turning on ordinary volatility, which defeats the point of a
-# weight-of-evidence read.
-TURN_THRESHOLD = 0.25
-SMOOTHING_WINDOW = 3
-
 # A net change smaller than this fraction of the window's own range is noise,
 # not a real move either way -- e.g. a credit spread landing 0.01 off where it
 # started (3.7% of a 0.27-wide window) shouldn't get called "improving" any
 # more confidently than "worsening".
 NOISE_THRESHOLD = 0.05
 
-# Overall read based on how many of the signals are flashing "improving"
-# (shape-retraced AND net-favorable, see classify()) at once — a simple
+# How much of the window's total travel (its high-low range) has to have been
+# given back through round-tripping, rather than a clean run from start to
+# end, before we call it volatile -- e.g. a steady climb has ~0 given-back
+# travel; a spike that mostly unwound has close to all of it.
+VOLATILITY_THRESHOLD = 0.5
+
+# Overall read based on how many of the signals are flashing "improving" or
+# "volatile-improving" (net-favorable, see classify()) at once — a simple
 # weight-of-evidence framing, not a trading signal.
 PHASE_GUIDANCE = [
     (0, "Acute phase — do NOT freak out and sell everything"),
@@ -47,44 +44,27 @@ def phase_read(improving_count):
     return label
 
 
-def shape(values, direction):
-    """watching / turning / retraced, from the shape of the window alone —
-    says nothing about whether the window's net move was favorable."""
-    worst = max(values) if direction == "lower" else min(values)
-    # last occurrence, so a plateau at the extreme still reads as "still there"
-    worst_idx = max(i for i, v in enumerate(values) if v == worst)
-
-    if worst_idx == len(values) - 1:
-        return "watching"
-
-    recent = values[-min(SMOOTHING_WINDOW, len(values)):]
-    latest_avg = sum(recent) / len(recent)
-    window_range = max(values) - min(values)
-    retrace_frac = abs(latest_avg - worst) / window_range if window_range else 0
-
-    return "retraced" if retrace_frac >= TURN_THRESHOLD else "turning"
-
-
 def classify(values, direction):
     """
-    watching / turning / recovering / improving. "recovering" and "improving"
-    are both shape="retraced" (off the window's worst point by a real margin)
-    but only "improving" is also net-favorable over the full window —
-    otherwise a signal that spiked and partly unwound reads as flat-out
-    "improving" while still being worse than it was N weeks ago.
-    """
-    shape_state = shape(values, direction)
-    if shape_state != "retraced":
-        return shape_state
+    flat / worsening / improving / volatile-worsening / volatile-improving.
 
+    Two independent reads of the window: has it net moved enough to call a
+    direction at all (vs. noise), and how much of its total travel was
+    round-tripped rather than a clean trend (volatility).
+    """
     latest_val, oldest_val = values[-1], values[0]
     change = latest_val - oldest_val
     window_range = max(values) - min(values)
-    if window_range and abs(change) / window_range < NOISE_THRESHOLD:
-        return "recovering"  # net move is noise-level, not a genuine improvement
 
-    net_favorable = (change < 0) if direction == "lower" else (change > 0)
-    return "improving" if net_favorable else "recovering"
+    if window_range == 0 or abs(change) / window_range < NOISE_THRESHOLD:
+        return "flat"
+
+    favorable = (change < 0) if direction == "lower" else (change > 0)
+    volatile = (window_range - abs(change)) / window_range >= VOLATILITY_THRESHOLD
+
+    if volatile:
+        return "volatile-improving" if favorable else "volatile-worsening"
+    return "improving" if favorable else "worsening"
 
 
 def main():
@@ -112,7 +92,7 @@ def main():
         change = latest_val - oldest_val
         pct_change = (change / oldest_val * 100) if oldest_val else 0
 
-        if state == "improving":
+        if state in ("improving", "volatile-improving"):
             improving_count += 1
 
         results.append({

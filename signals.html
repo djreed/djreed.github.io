@@ -95,18 +95,20 @@
     font-weight: bold;
     white-space: nowrap;
   }
-  .signal-change.watching { color: #c23127; }
-  .signal-change.turning { color: #c23127; opacity: 0.7; }
-  .signal-change.recovering { color: #c23127; opacity: 0.45; }
+  .signal-change.worsening { color: #c23127; }
+  .signal-change.volatile-worsening { color: #c23127; opacity: 0.7; }
+  .signal-change.flat { color: #373737; opacity: 0.5; }
+  .signal-change.volatile-improving { color: #373737; opacity: 0.75; }
   .signal-change.improving { color: #373737; }
   .signal-flag {
     white-space: nowrap;
     font-size: 0.9em;
   }
   .signal-flag.improving::before { content: "// improving"; opacity: 0.6; }
-  .signal-flag.recovering::before { content: "// recovering"; color: #c23127; opacity: 0.45; font-style: italic; }
-  .signal-flag.turning::before { content: "// turning"; color: #c23127; opacity: 0.7; font-style: italic; }
-  .signal-flag.watching::before { content: "// watching"; color: #c23127; font-weight: bold; }
+  .signal-flag.volatile-improving::before { content: "// volatile-improving"; opacity: 0.6; font-style: italic; }
+  .signal-flag.flat::before { content: "// flat"; opacity: 0.45; font-style: italic; }
+  .signal-flag.volatile-worsening::before { content: "// volatile-worsening"; color: #c23127; opacity: 0.7; font-style: italic; }
+  .signal-flag.worsening::before { content: "// worsening"; color: #c23127; font-weight: bold; }
   .signal-name {
     color: #373737;
     text-decoration: underline;
