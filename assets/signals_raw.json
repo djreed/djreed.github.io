@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T15:24:06Z",
+  "generated_at": "2026-09-21T17:22:02Z",
   "lookback_weeks": 8,
   "series": {
     "GASDESW": {
@@ -44,10 +44,6 @@
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-07-24",
-          "value": 91.74
-        },
         {
           "date": "2026-07-27",
           "value": 84.25
@@ -198,10 +194,6 @@
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-07-24",
-          "value": 2.79
-        },
         {
           "date": "2026-07-27",
           "value": 2.81
@@ -357,6 +349,10 @@
         {
           "date": "2026-09-17",
           "value": 2.7
+        },
+        {
+          "date": "2026-09-18",
+          "value": 2.68
         }
       ]
     },
@@ -364,10 +360,6 @@
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "observations": [
-        {
-          "date": "2026-07-24",
-          "value": 0.36
-        },
         {
           "date": "2026-07-27",
           "value": 0.34
@@ -519,6 +511,10 @@
         {
           "date": "2026-09-17",
           "value": 0.27
+        },
+        {
+          "date": "2026-09-18",
+          "value": 0.25
         }
       ]
     },
@@ -526,10 +522,6 @@
       "name": "Initial jobless claims (weekly)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-07-25",
-          "value": 198000.0
-        },
         {
           "date": "2026-08-01",
           "value": 200000.0
@@ -564,10 +556,6 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-07-24",
-          "value": 18.58
-        },
         {
           "date": "2026-07-27",
           "value": 18.67
@@ -723,6 +711,10 @@
         {
           "date": "2026-09-17",
           "value": 15.44
+        },
+        {
+          "date": "2026-09-18",
+          "value": 14.81
         }
       ]
     }
