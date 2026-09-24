@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T15:44:27Z",
+  "generated_at": "2026-09-24T16:06:26Z",
   "lookback_weeks": 8,
   "series": {
     "GASDESW": {
@@ -44,10 +44,6 @@
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-07-29",
-          "value": 86.08
-        },
         {
           "date": "2026-07-30",
           "value": 85.15
@@ -179,6 +175,26 @@
         {
           "date": "2026-09-15",
           "value": 107.02
+        },
+        {
+          "date": "2026-09-16",
+          "value": 103.62
+        },
+        {
+          "date": "2026-09-17",
+          "value": 103.21
+        },
+        {
+          "date": "2026-09-18",
+          "value": 101.44
+        },
+        {
+          "date": "2026-09-21",
+          "value": 96.97
+        },
+        {
+          "date": "2026-09-22",
+          "value": 96.41
         }
       ]
     },
@@ -186,10 +202,6 @@
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-07-29",
-          "value": 2.87
-        },
         {
           "date": "2026-07-30",
           "value": 2.84
@@ -345,6 +357,10 @@
         {
           "date": "2026-09-22",
           "value": 2.68
+        },
+        {
+          "date": "2026-09-23",
+          "value": 2.73
         }
       ]
     },
@@ -352,10 +368,6 @@
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "observations": [
-        {
-          "date": "2026-07-29",
-          "value": 0.45
-        },
         {
           "date": "2026-07-30",
           "value": 0.45
@@ -507,6 +519,10 @@
         {
           "date": "2026-09-22",
           "value": 0.25
+        },
+        {
+          "date": "2026-09-23",
+          "value": 0.26
         }
       ]
     },
@@ -536,11 +552,15 @@
         },
         {
           "date": "2026-09-05",
-          "value": 206000.0
+          "value": 207000.0
         },
         {
           "date": "2026-09-12",
-          "value": 196000.0
+          "value": 198000.0
+        },
+        {
+          "date": "2026-09-19",
+          "value": 197000.0
         }
       ]
     },
@@ -548,10 +568,6 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-07-29",
-          "value": 20.66
-        },
         {
           "date": "2026-07-30",
           "value": 17.09
