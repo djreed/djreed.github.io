@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T16:06:26Z",
+  "generated_at": "2026-09-25T16:06:20Z",
   "lookback_weeks": 8,
   "series": {
     "GASDESW": {
@@ -44,10 +44,6 @@
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-07-30",
-          "value": 85.15
-        },
         {
           "date": "2026-07-31",
           "value": 86.16
@@ -203,10 +199,6 @@
       "direction": "lower",
       "observations": [
         {
-          "date": "2026-07-30",
-          "value": 2.84
-        },
-        {
           "date": "2026-07-31",
           "value": 2.85
         },
@@ -361,6 +353,10 @@
         {
           "date": "2026-09-23",
           "value": 2.73
+        },
+        {
+          "date": "2026-09-24",
+          "value": 2.8
         }
       ]
     },
@@ -368,10 +364,6 @@
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "observations": [
-        {
-          "date": "2026-07-30",
-          "value": 0.45
-        },
         {
           "date": "2026-07-31",
           "value": 0.47
@@ -523,6 +515,10 @@
         {
           "date": "2026-09-23",
           "value": 0.26
+        },
+        {
+          "date": "2026-09-24",
+          "value": 0.31
         }
       ]
     },
@@ -568,10 +564,6 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-07-30",
-          "value": 17.09
-        },
         {
           "date": "2026-07-31",
           "value": 15.99
