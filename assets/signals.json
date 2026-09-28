@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-25T16:06:20Z",
+  "generated_at": "2026-09-28T18:55:07Z",
   "lookback_weeks": 8,
-  "improving_count": 3,
+  "improving_count": 2,
   "total_count": 6,
   "phase_read": "Early transition \u2014 maybe buy a little bit",
   "signals": [
@@ -24,46 +24,46 @@
       "state": "volatile-worsening",
       "latest_date": "2026-09-22",
       "latest_value": 96.41,
-      "compare_date": "2026-07-31",
-      "compare_value": 86.16,
-      "change": 10.25,
-      "pct_change": 11.9
+      "compare_date": "2026-08-03",
+      "compare_value": 81.96,
+      "change": 14.45,
+      "pct_change": 17.63
     },
     {
       "id": "BAMLH0A0HYM2",
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
-      "state": "volatile-improving",
-      "latest_date": "2026-09-24",
-      "latest_value": 2.8,
-      "compare_date": "2026-07-31",
-      "compare_value": 2.85,
-      "change": -0.05,
-      "pct_change": -1.75
+      "state": "volatile-worsening",
+      "latest_date": "2026-09-25",
+      "latest_value": 2.93,
+      "compare_date": "2026-08-03",
+      "compare_value": 2.78,
+      "change": 0.15,
+      "pct_change": 5.4
     },
     {
       "id": "T10Y2Y",
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "state": "volatile-worsening",
-      "latest_date": "2026-09-24",
-      "latest_value": 0.31,
-      "compare_date": "2026-07-31",
-      "compare_value": 0.47,
-      "change": -0.16,
-      "pct_change": -34.04
+      "latest_date": "2026-09-25",
+      "latest_value": 0.36,
+      "compare_date": "2026-08-03",
+      "compare_value": 0.45,
+      "change": -0.09,
+      "pct_change": -20.0
     },
     {
       "id": "ICSA",
       "name": "Initial jobless claims (weekly)",
       "direction": "lower",
-      "state": "volatile-improving",
+      "state": "improving",
       "latest_date": "2026-09-19",
       "latest_value": 197000.0,
-      "compare_date": "2026-08-01",
-      "compare_value": 200000.0,
-      "change": -3000.0,
-      "pct_change": -1.5
+      "compare_date": "2026-08-08",
+      "compare_value": 212000.0,
+      "change": -15000.0,
+      "pct_change": -7.08
     },
     {
       "id": "VIXCLS",
@@ -72,10 +72,10 @@
       "state": "volatile-improving",
       "latest_date": "2026-09-22",
       "latest_value": 14.21,
-      "compare_date": "2026-07-31",
-      "compare_value": 15.99,
-      "change": -1.78,
-      "pct_change": -11.13
+      "compare_date": "2026-08-03",
+      "compare_value": 15.86,
+      "change": -1.65,
+      "pct_change": -10.4
     }
   ]
 }

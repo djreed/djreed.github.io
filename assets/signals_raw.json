@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T16:06:20Z",
+  "generated_at": "2026-09-28T18:55:07Z",
   "lookback_weeks": 8,
   "series": {
     "GASDESW": {
@@ -44,10 +44,6 @@
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-07-31",
-          "value": 86.16
-        },
         {
           "date": "2026-08-03",
           "value": 81.96
@@ -198,10 +194,6 @@
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-07-31",
-          "value": 2.85
-        },
         {
           "date": "2026-08-03",
           "value": 2.78
@@ -357,6 +349,10 @@
         {
           "date": "2026-09-24",
           "value": 2.8
+        },
+        {
+          "date": "2026-09-25",
+          "value": 2.93
         }
       ]
     },
@@ -364,10 +360,6 @@
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "observations": [
-        {
-          "date": "2026-07-31",
-          "value": 0.47
-        },
         {
           "date": "2026-08-03",
           "value": 0.45
@@ -519,6 +511,10 @@
         {
           "date": "2026-09-24",
           "value": 0.31
+        },
+        {
+          "date": "2026-09-25",
+          "value": 0.36
         }
       ]
     },
@@ -526,10 +522,6 @@
       "name": "Initial jobless claims (weekly)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-01",
-          "value": 200000.0
-        },
         {
           "date": "2026-08-08",
           "value": 212000.0
@@ -564,10 +556,6 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-07-31",
-          "value": 15.99
-        },
         {
           "date": "2026-08-03",
           "value": 15.86
