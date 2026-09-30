@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T17:13:17Z",
+  "generated_at": "2026-09-30T17:11:19Z",
   "lookback_weeks": 8,
   "series": {
     "GASDESW": {
@@ -44,10 +44,6 @@
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-04",
-          "value": 77.33
-        },
         {
           "date": "2026-08-05",
           "value": 76.78
@@ -190,10 +186,6 @@
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-04",
-          "value": 2.73
-        },
         {
           "date": "2026-08-05",
           "value": 2.75
@@ -349,6 +341,10 @@
         {
           "date": "2026-09-28",
           "value": 3.02
+        },
+        {
+          "date": "2026-09-29",
+          "value": 3.08
         }
       ]
     },
@@ -356,10 +352,6 @@
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "observations": [
-        {
-          "date": "2026-08-04",
-          "value": 0.43
-        },
         {
           "date": "2026-08-05",
           "value": 0.45
@@ -511,6 +503,10 @@
         {
           "date": "2026-09-28",
           "value": 0.32
+        },
+        {
+          "date": "2026-09-29",
+          "value": 0.37
         }
       ]
     },
@@ -552,10 +548,6 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-04",
-          "value": 16.5
-        },
         {
           "date": "2026-08-05",
           "value": 15.81
@@ -695,6 +687,26 @@
         {
           "date": "2026-09-22",
           "value": 14.21
+        },
+        {
+          "date": "2026-09-23",
+          "value": 15.18
+        },
+        {
+          "date": "2026-09-24",
+          "value": 15.67
+        },
+        {
+          "date": "2026-09-25",
+          "value": 14.87
+        },
+        {
+          "date": "2026-09-28",
+          "value": 16.07
+        },
+        {
+          "date": "2026-09-29",
+          "value": 16.04
         }
       ]
     }
