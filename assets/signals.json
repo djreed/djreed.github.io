@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T17:40:57Z",
+  "generated_at": "2026-10-02T16:59:48Z",
   "lookback_weeks": 8,
   "improving_count": 1,
   "total_count": 6,
@@ -24,34 +24,34 @@
       "state": "worsening",
       "latest_date": "2026-09-29",
       "latest_value": 96.16,
-      "compare_date": "2026-08-06",
-      "compare_value": 78.88,
-      "change": 17.28,
-      "pct_change": 21.91
+      "compare_date": "2026-08-07",
+      "compare_value": 79.77,
+      "change": 16.39,
+      "pct_change": 20.55
     },
     {
       "id": "BAMLH0A0HYM2",
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "state": "worsening",
-      "latest_date": "2026-09-30",
-      "latest_value": 3.12,
-      "compare_date": "2026-08-06",
-      "compare_value": 2.71,
-      "change": 0.41,
-      "pct_change": 15.13
+      "latest_date": "2026-10-01",
+      "latest_value": 3.24,
+      "compare_date": "2026-08-07",
+      "compare_value": 2.7,
+      "change": 0.54,
+      "pct_change": 20.0
     },
     {
       "id": "T10Y2Y",
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
-      "state": "volatile-worsening",
-      "latest_date": "2026-09-30",
-      "latest_value": 0.41,
-      "compare_date": "2026-08-06",
-      "compare_value": 0.44,
-      "change": -0.03,
-      "pct_change": -6.82
+      "state": "flat",
+      "latest_date": "2026-10-01",
+      "latest_value": 0.46,
+      "compare_date": "2026-08-07",
+      "compare_value": 0.46,
+      "change": 0.0,
+      "pct_change": 0.0
     },
     {
       "id": "ICSA",
@@ -70,12 +70,12 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "state": "volatile-worsening",
-      "latest_date": "2026-09-30",
-      "latest_value": 16.34,
-      "compare_date": "2026-08-06",
-      "compare_value": 15.15,
-      "change": 1.19,
-      "pct_change": 7.85
+      "latest_date": "2026-10-01",
+      "latest_value": 16.39,
+      "compare_date": "2026-08-07",
+      "compare_value": 14.9,
+      "change": 1.49,
+      "pct_change": 10.0
     }
   ]
 }
