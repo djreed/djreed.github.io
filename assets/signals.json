@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-07T18:05:44Z",
+  "generated_at": "2026-10-08T18:08:01Z",
   "lookback_weeks": 8,
-  "improving_count": 1,
+  "improving_count": 2,
   "total_count": 6,
-  "phase_read": "Acute phase \u2014 do NOT freak out and sell everything",
+  "phase_read": "Early transition \u2014 maybe buy a little bit",
   "signals": [
     {
       "id": "GASDESW",
@@ -21,44 +21,44 @@
       "id": "DCOILWTICO",
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
-      "state": "volatile-worsening",
+      "state": "worsening",
       "latest_date": "2026-10-06",
       "latest_value": 96.24,
-      "compare_date": "2026-08-12",
-      "compare_value": 84.97,
-      "change": 11.27,
-      "pct_change": 13.26
+      "compare_date": "2026-08-13",
+      "compare_value": 82.77,
+      "change": 13.47,
+      "pct_change": 16.27
     },
     {
       "id": "BAMLH0A0HYM2",
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
-      "state": "volatile-worsening",
-      "latest_date": "2026-10-06",
-      "latest_value": 3.03,
-      "compare_date": "2026-08-12",
+      "state": "worsening",
+      "latest_date": "2026-10-07",
+      "latest_value": 3.09,
+      "compare_date": "2026-08-13",
       "compare_value": 2.71,
-      "change": 0.32,
-      "pct_change": 11.81
+      "change": 0.38,
+      "pct_change": 14.02
     },
     {
       "id": "T10Y2Y",
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
-      "state": "flat",
-      "latest_date": "2026-10-06",
-      "latest_value": 0.48,
-      "compare_date": "2026-08-12",
+      "state": "volatile-improving",
+      "latest_date": "2026-10-07",
+      "latest_value": 0.51,
+      "compare_date": "2026-08-13",
       "compare_value": 0.48,
-      "change": 0.0,
-      "pct_change": 0.0
+      "change": 0.03,
+      "pct_change": 6.25
     },
     {
       "id": "ICSA",
       "name": "Initial jobless claims (weekly)",
       "direction": "lower",
       "state": "improving",
-      "latest_date": "2026-09-26",
+      "latest_date": "2026-10-03",
       "latest_value": 197000.0,
       "compare_date": "2026-08-15",
       "compare_value": 207000.0,
@@ -70,12 +70,12 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "state": "volatile-worsening",
-      "latest_date": "2026-10-06",
-      "latest_value": 15.01,
-      "compare_date": "2026-08-12",
-      "compare_value": 14.55,
-      "change": 0.46,
-      "pct_change": 3.16
+      "latest_date": "2026-10-07",
+      "latest_value": 15.08,
+      "compare_date": "2026-08-13",
+      "compare_value": 14.63,
+      "change": 0.45,
+      "pct_change": 3.08
     }
   ]
 }
