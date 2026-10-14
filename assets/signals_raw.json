@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T18:38:20Z",
+  "generated_at": "2026-10-14T16:08:04Z",
   "lookback_weeks": 8,
   "series": {
     "GASDESW": {
@@ -33,6 +33,10 @@
         {
           "date": "2026-10-05",
           "value": 6.199
+        },
+        {
+          "date": "2026-10-12",
+          "value": 6.179
         }
       ]
     },
@@ -40,10 +44,6 @@
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-18",
-          "value": 86.48
-        },
         {
           "date": "2026-08-19",
           "value": 87.28
@@ -186,10 +186,6 @@
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-18",
-          "value": 2.75
-        },
         {
           "date": "2026-08-19",
           "value": 2.73
@@ -345,6 +341,10 @@
         {
           "date": "2026-10-12",
           "value": 3.11
+        },
+        {
+          "date": "2026-10-13",
+          "value": 3.16
         }
       ]
     },
@@ -352,10 +352,6 @@
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "observations": [
-        {
-          "date": "2026-08-18",
-          "value": 0.52
-        },
         {
           "date": "2026-08-19",
           "value": 0.46
@@ -503,6 +499,10 @@
         {
           "date": "2026-10-09",
           "value": 0.44
+        },
+        {
+          "date": "2026-10-13",
+          "value": 0.42
         }
       ]
     },
@@ -544,10 +544,6 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-18",
-          "value": 15.84
-        },
         {
           "date": "2026-08-19",
           "value": 14.89
@@ -703,6 +699,10 @@
         {
           "date": "2026-10-12",
           "value": 15.21
+        },
+        {
+          "date": "2026-10-13",
+          "value": 15.27
         }
       ]
     }
