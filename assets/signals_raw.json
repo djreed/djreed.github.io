@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T16:08:04Z",
+  "generated_at": "2026-10-15T15:56:04Z",
   "lookback_weeks": 8,
   "series": {
     "GASDESW": {
@@ -44,10 +44,6 @@
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-19",
-          "value": 87.28
-        },
         {
           "date": "2026-08-20",
           "value": 89.75
@@ -186,10 +182,6 @@
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-19",
-          "value": 2.73
-        },
         {
           "date": "2026-08-20",
           "value": 2.75
@@ -345,6 +337,10 @@
         {
           "date": "2026-10-13",
           "value": 3.16
+        },
+        {
+          "date": "2026-10-14",
+          "value": 3.25
         }
       ]
     },
@@ -352,10 +348,6 @@
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "observations": [
-        {
-          "date": "2026-08-19",
-          "value": 0.46
-        },
         {
           "date": "2026-08-20",
           "value": 0.5
@@ -503,6 +495,10 @@
         {
           "date": "2026-10-13",
           "value": 0.42
+        },
+        {
+          "date": "2026-10-14",
+          "value": 0.37
         }
       ]
     },
@@ -536,7 +532,11 @@
         },
         {
           "date": "2026-10-03",
-          "value": 197000.0
+          "value": 198000.0
+        },
+        {
+          "date": "2026-10-10",
+          "value": 199000.0
         }
       ]
     },
@@ -544,10 +544,6 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-19",
-          "value": 14.89
-        },
         {
           "date": "2026-08-20",
           "value": 16.01
@@ -703,6 +699,10 @@
         {
           "date": "2026-10-13",
           "value": 15.27
+        },
+        {
+          "date": "2026-10-14",
+          "value": 16.87
         }
       ]
     }
