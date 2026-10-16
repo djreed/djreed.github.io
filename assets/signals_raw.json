@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T15:56:04Z",
+  "generated_at": "2026-10-16T15:44:16Z",
   "lookback_weeks": 8,
   "series": {
     "GASDESW": {
@@ -44,10 +44,6 @@
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-20",
-          "value": 89.75
-        },
         {
           "date": "2026-08-21",
           "value": 87.21
@@ -175,6 +171,30 @@
         {
           "date": "2026-10-06",
           "value": 96.24
+        },
+        {
+          "date": "2026-10-07",
+          "value": 95.02
+        },
+        {
+          "date": "2026-10-08",
+          "value": 98.26
+        },
+        {
+          "date": "2026-10-09",
+          "value": 98.73
+        },
+        {
+          "date": "2026-10-12",
+          "value": 98.73
+        },
+        {
+          "date": "2026-10-13",
+          "value": 100.86
+        },
+        {
+          "date": "2026-10-14",
+          "value": 101.91
         }
       ]
     },
@@ -182,10 +202,6 @@
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-20",
-          "value": 2.75
-        },
         {
           "date": "2026-08-21",
           "value": 2.7
@@ -341,6 +357,10 @@
         {
           "date": "2026-10-14",
           "value": 3.25
+        },
+        {
+          "date": "2026-10-15",
+          "value": 3.23
         }
       ]
     },
@@ -348,10 +368,6 @@
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "observations": [
-        {
-          "date": "2026-08-20",
-          "value": 0.5
-        },
         {
           "date": "2026-08-21",
           "value": 0.5
@@ -499,6 +515,10 @@
         {
           "date": "2026-10-14",
           "value": 0.37
+        },
+        {
+          "date": "2026-10-15",
+          "value": 0.33
         }
       ]
     },
@@ -544,10 +564,6 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-20",
-          "value": 16.01
-        },
         {
           "date": "2026-08-21",
           "value": 15.13
@@ -703,6 +719,10 @@
         {
           "date": "2026-10-14",
           "value": 16.87
+        },
+        {
+          "date": "2026-10-15",
+          "value": 16.46
         }
       ]
     }
