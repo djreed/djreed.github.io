@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T15:44:16Z",
+  "generated_at": "2026-10-19T17:55:37Z",
   "lookback_weeks": 8,
   "series": {
     "GASDESW": {
@@ -44,10 +44,6 @@
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-21",
-          "value": 87.21
-        },
         {
           "date": "2026-08-24",
           "value": 86.34
@@ -203,10 +199,6 @@
       "direction": "lower",
       "observations": [
         {
-          "date": "2026-08-21",
-          "value": 2.7
-        },
-        {
           "date": "2026-08-24",
           "value": 2.69
         },
@@ -361,6 +353,10 @@
         {
           "date": "2026-10-15",
           "value": 3.23
+        },
+        {
+          "date": "2026-10-16",
+          "value": 3.31
         }
       ]
     },
@@ -368,10 +364,6 @@
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "observations": [
-        {
-          "date": "2026-08-21",
-          "value": 0.5
-        },
         {
           "date": "2026-08-24",
           "value": 0.46
@@ -519,6 +511,10 @@
         {
           "date": "2026-10-15",
           "value": 0.33
+        },
+        {
+          "date": "2026-10-16",
+          "value": 0.35
         }
       ]
     },
@@ -526,10 +522,6 @@
       "name": "Initial jobless claims (weekly)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-22",
-          "value": 204000.0
-        },
         {
           "date": "2026-08-29",
           "value": 207000.0
@@ -564,10 +556,6 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-21",
-          "value": 15.13
-        },
         {
           "date": "2026-08-24",
           "value": 15.85
@@ -723,6 +711,10 @@
         {
           "date": "2026-10-15",
           "value": 16.46
+        },
+        {
+          "date": "2026-10-16",
+          "value": 19.99
         }
       ]
     }
