@@ -1,15 +1,11 @@
 {
-  "generated_at": "2026-10-19T17:55:37Z",
+  "generated_at": "2026-10-20T15:59:33Z",
   "lookback_weeks": 8,
   "series": {
     "GASDESW": {
       "name": "Retail diesel price ($/gal, weekly)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-24",
-          "value": 5.652
-        },
         {
           "date": "2026-08-31",
           "value": 5.599
@@ -44,10 +40,6 @@
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-24",
-          "value": 86.34
-        },
         {
           "date": "2026-08-25",
           "value": 83.9
@@ -198,10 +190,6 @@
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-24",
-          "value": 2.69
-        },
         {
           "date": "2026-08-25",
           "value": 2.7
@@ -357,6 +345,10 @@
         {
           "date": "2026-10-16",
           "value": 3.31
+        },
+        {
+          "date": "2026-10-19",
+          "value": 3.29
         }
       ]
     },
@@ -364,10 +356,6 @@
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "observations": [
-        {
-          "date": "2026-08-24",
-          "value": 0.46
-        },
         {
           "date": "2026-08-25",
           "value": 0.47
@@ -515,6 +503,10 @@
         {
           "date": "2026-10-16",
           "value": 0.35
+        },
+        {
+          "date": "2026-10-19",
+          "value": 0.38
         }
       ]
     },
@@ -556,10 +548,6 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-08-24",
-          "value": 15.85
-        },
         {
           "date": "2026-08-25",
           "value": 15.45
@@ -715,6 +703,10 @@
         {
           "date": "2026-10-16",
           "value": 19.99
+        },
+        {
+          "date": "2026-10-19",
+          "value": 18.44
         }
       ]
     }

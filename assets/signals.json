@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T17:55:37Z",
+  "generated_at": "2026-10-20T15:59:33Z",
   "lookback_weeks": 8,
   "improving_count": 1,
   "total_count": 6,
@@ -12,10 +12,10 @@
       "state": "worsening",
       "latest_date": "2026-10-12",
       "latest_value": 6.179,
-      "compare_date": "2026-08-24",
-      "compare_value": 5.652,
-      "change": 0.527,
-      "pct_change": 9.32
+      "compare_date": "2026-08-31",
+      "compare_value": 5.599,
+      "change": 0.58,
+      "pct_change": 10.36
     },
     {
       "id": "DCOILWTICO",
@@ -24,34 +24,34 @@
       "state": "worsening",
       "latest_date": "2026-10-14",
       "latest_value": 101.91,
-      "compare_date": "2026-08-24",
-      "compare_value": 86.34,
-      "change": 15.57,
-      "pct_change": 18.03
+      "compare_date": "2026-08-25",
+      "compare_value": 83.9,
+      "change": 18.01,
+      "pct_change": 21.47
     },
     {
       "id": "BAMLH0A0HYM2",
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "state": "worsening",
-      "latest_date": "2026-10-16",
-      "latest_value": 3.31,
-      "compare_date": "2026-08-24",
-      "compare_value": 2.69,
-      "change": 0.62,
-      "pct_change": 23.05
+      "latest_date": "2026-10-19",
+      "latest_value": 3.29,
+      "compare_date": "2026-08-25",
+      "compare_value": 2.7,
+      "change": 0.59,
+      "pct_change": 21.85
     },
     {
       "id": "T10Y2Y",
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "state": "volatile-worsening",
-      "latest_date": "2026-10-16",
-      "latest_value": 0.35,
-      "compare_date": "2026-08-24",
-      "compare_value": 0.46,
-      "change": -0.11,
-      "pct_change": -23.91
+      "latest_date": "2026-10-19",
+      "latest_value": 0.38,
+      "compare_date": "2026-08-25",
+      "compare_value": 0.47,
+      "change": -0.09,
+      "pct_change": -19.15
     },
     {
       "id": "ICSA",
@@ -70,12 +70,12 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "state": "worsening",
-      "latest_date": "2026-10-16",
-      "latest_value": 19.99,
-      "compare_date": "2026-08-24",
-      "compare_value": 15.85,
-      "change": 4.14,
-      "pct_change": 26.12
+      "latest_date": "2026-10-19",
+      "latest_value": 18.44,
+      "compare_date": "2026-08-25",
+      "compare_value": 15.45,
+      "change": 2.99,
+      "pct_change": 19.35
     }
   ]
 }
