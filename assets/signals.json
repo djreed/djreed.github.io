@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T17:51:07Z",
+  "generated_at": "2026-10-27T16:59:31Z",
   "lookback_weeks": 8,
   "improving_count": 1,
   "total_count": 6,
@@ -10,12 +10,12 @@
       "name": "Retail diesel price ($/gal, weekly)",
       "direction": "lower",
       "state": "worsening",
-      "latest_date": "2026-10-19",
-      "latest_value": 6.276,
-      "compare_date": "2026-08-31",
-      "compare_value": 5.599,
-      "change": 0.677,
-      "pct_change": 12.09
+      "latest_date": "2026-10-26",
+      "latest_value": 6.352,
+      "compare_date": "2026-09-07",
+      "compare_value": 5.967,
+      "change": 0.385,
+      "pct_change": 6.45
     },
     {
       "id": "DCOILWTICO",
@@ -24,34 +24,34 @@
       "state": "worsening",
       "latest_date": "2026-10-20",
       "latest_value": 107.89,
-      "compare_date": "2026-08-31",
-      "compare_value": 87.03,
-      "change": 20.86,
-      "pct_change": 23.97
+      "compare_date": "2026-09-01",
+      "compare_value": 91.48,
+      "change": 16.41,
+      "pct_change": 17.94
     },
     {
       "id": "BAMLH0A0HYM2",
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "state": "worsening",
-      "latest_date": "2026-10-23",
-      "latest_value": 3.38,
-      "compare_date": "2026-08-31",
-      "compare_value": 2.63,
-      "change": 0.75,
-      "pct_change": 28.52
+      "latest_date": "2026-10-26",
+      "latest_value": 3.3,
+      "compare_date": "2026-09-01",
+      "compare_value": 2.65,
+      "change": 0.65,
+      "pct_change": 24.53
     },
     {
       "id": "T10Y2Y",
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "state": "volatile-worsening",
-      "latest_date": "2026-10-23",
-      "latest_value": 0.31,
-      "compare_date": "2026-08-31",
-      "compare_value": 0.41,
-      "change": -0.1,
-      "pct_change": -24.39
+      "latest_date": "2026-10-26",
+      "latest_value": 0.32,
+      "compare_date": "2026-09-01",
+      "compare_value": 0.4,
+      "change": -0.08,
+      "pct_change": -20.0
     },
     {
       "id": "ICSA",
@@ -69,13 +69,13 @@
       "id": "VIXCLS",
       "name": "VIX volatility index (daily)",
       "direction": "lower",
-      "state": "worsening",
-      "latest_date": "2026-10-23",
-      "latest_value": 19.45,
-      "compare_date": "2026-08-31",
-      "compare_value": 14.92,
-      "change": 4.53,
-      "pct_change": 30.36
+      "state": "volatile-worsening",
+      "latest_date": "2026-10-26",
+      "latest_value": 18.39,
+      "compare_date": "2026-09-01",
+      "compare_value": 16.34,
+      "change": 2.05,
+      "pct_change": 12.55
     }
   ]
 }
