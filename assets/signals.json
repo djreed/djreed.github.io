@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T18:39:26Z",
+  "generated_at": "2026-11-09T21:43:41Z",
   "lookback_weeks": 8,
   "improving_count": 3,
   "total_count": 6,
@@ -24,34 +24,34 @@
       "state": "volatile-improving",
       "latest_date": "2026-11-03",
       "latest_value": 99.64,
-      "compare_date": "2026-09-11",
-      "compare_value": 101.27,
-      "change": -1.63,
-      "pct_change": -1.61
+      "compare_date": "2026-09-14",
+      "compare_value": 102.42,
+      "change": -2.78,
+      "pct_change": -2.71
     },
     {
       "id": "BAMLH0A0HYM2",
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "state": "worsening",
-      "latest_date": "2026-11-05",
-      "latest_value": 3.48,
-      "compare_date": "2026-09-11",
-      "compare_value": 2.65,
-      "change": 0.83,
-      "pct_change": 31.32
+      "latest_date": "2026-11-06",
+      "latest_value": 3.42,
+      "compare_date": "2026-09-14",
+      "compare_value": 2.71,
+      "change": 0.71,
+      "pct_change": 26.2
     },
     {
       "id": "T10Y2Y",
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "state": "volatile-improving",
-      "latest_date": "2026-11-05",
-      "latest_value": 0.38,
-      "compare_date": "2026-09-11",
-      "compare_value": 0.33,
-      "change": 0.05,
-      "pct_change": 15.15
+      "latest_date": "2026-11-06",
+      "latest_value": 0.35,
+      "compare_date": "2026-09-14",
+      "compare_value": 0.32,
+      "change": 0.03,
+      "pct_change": 9.37
     },
     {
       "id": "ICSA",
@@ -60,7 +60,7 @@
       "state": "improving",
       "latest_date": "2026-10-31",
       "latest_value": 189000.0,
-      "compare_date": "2026-09-12",
+      "compare_date": "2026-09-19",
       "compare_value": 198000.0,
       "change": -9000.0,
       "pct_change": -4.55
@@ -70,12 +70,12 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "state": "worsening",
-      "latest_date": "2026-11-05",
-      "latest_value": 28.18,
-      "compare_date": "2026-09-11",
-      "compare_value": 15.84,
-      "change": 12.34,
-      "pct_change": 77.9
+      "latest_date": "2026-11-06",
+      "latest_value": 25.64,
+      "compare_date": "2026-09-14",
+      "compare_value": 17.1,
+      "change": 8.54,
+      "pct_change": 49.94
     }
   ]
 }

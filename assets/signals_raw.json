@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T18:39:26Z",
+  "generated_at": "2026-11-09T21:43:41Z",
   "lookback_weeks": 8,
   "series": {
     "GASDESW": {
@@ -44,10 +44,6 @@
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-09-11",
-          "value": 101.27
-        },
         {
           "date": "2026-09-14",
           "value": 102.42
@@ -203,10 +199,6 @@
       "direction": "lower",
       "observations": [
         {
-          "date": "2026-09-11",
-          "value": 2.65
-        },
-        {
           "date": "2026-09-14",
           "value": 2.71
         },
@@ -361,6 +353,10 @@
         {
           "date": "2026-11-05",
           "value": 3.48
+        },
+        {
+          "date": "2026-11-06",
+          "value": 3.42
         }
       ]
     },
@@ -368,10 +364,6 @@
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "observations": [
-        {
-          "date": "2026-09-11",
-          "value": 0.33
-        },
         {
           "date": "2026-09-14",
           "value": 0.32
@@ -523,6 +515,10 @@
         {
           "date": "2026-11-05",
           "value": 0.38
+        },
+        {
+          "date": "2026-11-06",
+          "value": 0.35
         }
       ]
     },
@@ -530,10 +526,6 @@
       "name": "Initial jobless claims (weekly)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-09-12",
-          "value": 198000.0
-        },
         {
           "date": "2026-09-19",
           "value": 198000.0
@@ -568,10 +560,6 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-09-11",
-          "value": 15.84
-        },
         {
           "date": "2026-09-14",
           "value": 17.1
@@ -727,6 +715,10 @@
         {
           "date": "2026-11-05",
           "value": 28.18
+        },
+        {
+          "date": "2026-11-06",
+          "value": 25.64
         }
       ]
     }
