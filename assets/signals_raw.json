@@ -1,15 +1,11 @@
 {
-  "generated_at": "2026-11-09T21:43:41Z",
+  "generated_at": "2026-11-10T19:00:44Z",
   "lookback_weeks": 8,
   "series": {
     "GASDESW": {
       "name": "Retail diesel price ($/gal, weekly)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-09-14",
-          "value": 6.285
-        },
         {
           "date": "2026-09-21",
           "value": 6.529
@@ -37,6 +33,10 @@
         {
           "date": "2026-11-02",
           "value": 6.292
+        },
+        {
+          "date": "2026-11-09",
+          "value": 6.127
         }
       ]
     },
@@ -44,10 +44,6 @@
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-09-14",
-          "value": 102.42
-        },
         {
           "date": "2026-09-15",
           "value": 107.02
@@ -198,10 +194,6 @@
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-09-14",
-          "value": 2.71
-        },
         {
           "date": "2026-09-15",
           "value": 2.76
@@ -357,6 +349,10 @@
         {
           "date": "2026-11-06",
           "value": 3.42
+        },
+        {
+          "date": "2026-11-09",
+          "value": 3.34
         }
       ]
     },
@@ -364,10 +360,6 @@
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "observations": [
-        {
-          "date": "2026-09-14",
-          "value": 0.32
-        },
         {
           "date": "2026-09-15",
           "value": 0.33
@@ -519,6 +511,10 @@
         {
           "date": "2026-11-06",
           "value": 0.35
+        },
+        {
+          "date": "2026-11-09",
+          "value": 0.32
         }
       ]
     },
@@ -560,10 +556,6 @@
       "name": "VIX volatility index (daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-09-14",
-          "value": 17.1
-        },
         {
           "date": "2026-09-15",
           "value": 17.2
@@ -719,6 +711,10 @@
         {
           "date": "2026-11-06",
           "value": 25.64
+        },
+        {
+          "date": "2026-11-09",
+          "value": 19.92
         }
       ]
     }
