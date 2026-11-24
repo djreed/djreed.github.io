@@ -1,15 +1,11 @@
 {
-  "generated_at": "2026-11-23T23:01:53Z",
+  "generated_at": "2026-11-24T21:41:01Z",
   "lookback_weeks": 8,
   "series": {
     "GASDESW": {
       "name": "Retail diesel price ($/gal, weekly)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-09-28",
-          "value": 6.382
-        },
         {
           "date": "2026-10-05",
           "value": 6.199
@@ -37,6 +33,10 @@
         {
           "date": "2026-11-16",
           "value": 5.937
+        },
+        {
+          "date": "2026-11-23",
+          "value": 5.695
         }
       ]
     },
@@ -44,10 +44,6 @@
       "name": "WTI crude oil ($/bbl, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-09-28",
-          "value": 99.37
-        },
         {
           "date": "2026-09-29",
           "value": 96.16
@@ -198,10 +194,6 @@
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "observations": [
-        {
-          "date": "2026-09-28",
-          "value": 3.02
-        },
         {
           "date": "2026-09-29",
           "value": 3.08
@@ -357,6 +349,10 @@
         {
           "date": "2026-11-20",
           "value": 3.76
+        },
+        {
+          "date": "2026-11-23",
+          "value": 3.63
         }
       ]
     },
@@ -364,10 +360,6 @@
       "name": "10Y-2Y Treasury spread (%, daily)",
       "direction": "higher",
       "observations": [
-        {
-          "date": "2026-09-28",
-          "value": 0.32
-        },
         {
           "date": "2026-09-29",
           "value": 0.37
@@ -561,10 +553,6 @@
       "direction": "lower",
       "observations": [
         {
-          "date": "2026-09-28",
-          "value": 16.07
-        },
-        {
           "date": "2026-09-29",
           "value": 16.04
         },
@@ -719,6 +707,10 @@
         {
           "date": "2026-11-20",
           "value": 35.89
+        },
+        {
+          "date": "2026-11-23",
+          "value": 26.62
         }
       ]
     }
