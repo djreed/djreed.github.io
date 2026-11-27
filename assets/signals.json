@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T20:40:51Z",
+  "generated_at": "2026-11-27T20:26:53Z",
   "lookback_weeks": 8,
   "improving_count": 3,
   "total_count": 6,
@@ -24,22 +24,22 @@
       "state": "improving",
       "latest_date": "2026-11-24",
       "latest_value": 82.24,
-      "compare_date": "2026-10-01",
-      "compare_value": 99.77,
-      "change": -17.53,
-      "pct_change": -17.57
+      "compare_date": "2026-10-02",
+      "compare_value": 97.89,
+      "change": -15.65,
+      "pct_change": -15.99
     },
     {
       "id": "BAMLH0A0HYM2",
       "name": "High-yield credit spread (%, daily)",
       "direction": "lower",
       "state": "worsening",
-      "latest_date": "2026-11-24",
-      "latest_value": 3.72,
-      "compare_date": "2026-10-01",
-      "compare_value": 3.24,
-      "change": 0.48,
-      "pct_change": 14.81
+      "latest_date": "2026-11-26",
+      "latest_value": 3.77,
+      "compare_date": "2026-10-02",
+      "compare_value": 3.1,
+      "change": 0.67,
+      "pct_change": 21.61
     },
     {
       "id": "T10Y2Y",
@@ -48,10 +48,10 @@
       "state": "worsening",
       "latest_date": "2026-11-25",
       "latest_value": 0.24,
-      "compare_date": "2026-10-01",
-      "compare_value": 0.46,
-      "change": -0.22,
-      "pct_change": -47.83
+      "compare_date": "2026-10-02",
+      "compare_value": 0.45,
+      "change": -0.21,
+      "pct_change": -46.67
     },
     {
       "id": "ICSA",
@@ -69,13 +69,13 @@
       "id": "VIXCLS",
       "name": "VIX volatility index (daily)",
       "direction": "lower",
-      "state": "volatile-worsening",
-      "latest_date": "2026-11-24",
-      "latest_value": 26.36,
-      "compare_date": "2026-10-01",
-      "compare_value": 16.39,
-      "change": 9.97,
-      "pct_change": 60.83
+      "state": "worsening",
+      "latest_date": "2026-11-26",
+      "latest_value": 26.8,
+      "compare_date": "2026-10-02",
+      "compare_value": 15.31,
+      "change": 11.49,
+      "pct_change": 75.05
     }
   ]
 }
